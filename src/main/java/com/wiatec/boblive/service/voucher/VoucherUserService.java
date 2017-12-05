@@ -12,7 +12,7 @@ import com.wiatec.boblive.orm.dao.voucher.VoucherUserDao;
 import com.wiatec.boblive.orm.pojo.voucher.VoucherOrderInfo;
 import com.wiatec.boblive.orm.pojo.voucher.VoucherUserCategoryInfo;
 import com.wiatec.boblive.orm.pojo.voucher.VoucherUserInfo;
-import com.wiatec.boblive.voucher.VoucherMaster;
+import com.wiatec.boblive.VoucherMaster;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -20,12 +20,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-import java.sql.SQLException;
 
 @Service
 public class VoucherUserService {
 
-    private Logger logger = LoggerFactory.getLogger(VoucherUserService.class);
+    private final Logger logger = LoggerFactory.getLogger(VoucherUserService.class);
 
     @Resource
     private VoucherUserCategoryDao voucherUserCategoryDao;

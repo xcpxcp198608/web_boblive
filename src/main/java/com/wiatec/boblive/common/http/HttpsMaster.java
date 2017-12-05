@@ -25,7 +25,8 @@ public class HttpsMaster {
     private static SSLContext sslContext;
     public static OkHttpClient okHttpClient;
     private static Logger logger = LoggerFactory.getLogger(HttpsMaster.class);
-    private static final String KEY_STORE_FILE="/Users/xuchengpeng/IdeaProjects/boblive/src/main/resources/cert/cert.p12";
+    private static String path = Thread.currentThread().getContextClassLoader().getResource("/").getPath();
+    private static final String KEY_STORE_FILE="cert/cert.p12";
 //    private static final String KEY_STORE_FILE="/home/patrick/javaweb/boblive/WEB-INF/classes/cert/cert.p12";
     private static final String KEY_STORE_PASS="123456";
 
@@ -87,7 +88,7 @@ public class HttpsMaster {
                 sslContext = SSLContext.getInstance("SSL");
                 sslContext.init(keyManagers, trustAllCerts, new SecureRandom());
             } catch (Exception e) {
-                throw new XException(ResultMaster.error(1009, e.getMessage()));
+                throw new XException(ResultMaster.error(1019, e.getMessage()));
             }
         }
         return sslContext;
@@ -97,11 +98,12 @@ public class HttpsMaster {
         KeyStore keyStore=null;
         try {
             keyStore = KeyStore.getInstance("PKCS12");
-            FileInputStream fis = new FileInputStream(new File(KEY_STORE_FILE));
+            logger.debug(path + KEY_STORE_FILE);
+            FileInputStream fis = new FileInputStream(new File(path + KEY_STORE_FILE));
             keyStore.load(fis, KEY_STORE_PASS.toCharArray());
             fis.close();
         } catch (KeyStoreException | NoSuchAlgorithmException | CertificateException | IOException e) {
-            throw new XException(ResultMaster.error(1009, e.getMessage()));
+            throw new XException(ResultMaster.error(1029, e.getMessage()));
         }
         return keyStore;
     }

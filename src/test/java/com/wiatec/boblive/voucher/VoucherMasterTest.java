@@ -1,6 +1,6 @@
 package com.wiatec.boblive.voucher;
 
-import com.wiatec.boblive.common.http.HttpsMaster;
+import com.wiatec.boblive.VoucherMaster;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,14 +12,14 @@ public class VoucherMasterTest {
 
     @Test
     public void pay() throws Exception {
-        boolean validate = VoucherMaster.pay("102616489468", 1.0f, "1231232345");
-        logger.debug(validate+"");
+        float amount = VoucherMaster.pay("102616489468", 1.0f, "1231232345");
+        logger.debug(amount+"");
     }
 
     @Test
     public void validate() throws Exception {
-        float amount = VoucherMaster.confirm("102616489468");
-        logger.debug(amount+"");
+        boolean re = VoucherMaster.confirm("102616489468", 1.0f);
+        logger.debug(re+"");
     }
 
     @Test

@@ -1,4 +1,4 @@
-package com.wiatec.boblive.voucher;
+package com.wiatec.boblive;
 
 
 import com.wiatec.boblive.common.http.HttpsMaster;
