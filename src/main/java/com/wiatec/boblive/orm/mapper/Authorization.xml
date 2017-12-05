@@ -1,0 +1,212 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wiatec.boblive.orm.dao.auth.AuthorizationDao">
+    <resultMap type="com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo" id="authorizationInfo">
+        <id column="id" property="id"/>
+        <result column="key" property="key"/>
+        <result column="mac" property="mac"/>
+        <result column="active" property="active"/>
+        <result column="activeDate" property="activeDate"/>
+        <result column="activeTime" property="activeTime"/>
+        <result column="sales" property="sales"/>
+        <result column="dealer" property="dealer"/>
+        <result column="leader" property="leader"/>
+        <result column="level" property="level"/>
+        <result column="memberDate" property="memberDate"/>
+        <result column="memberTime" property="memberTime"/>
+        <result column="effective" property="effective"/>
+        <result column="temporary" property="temporary"/>
+    </resultMap>
+
+    <sql id="select">SELECT id, `key`, mac, active, activeDate , activeTime, sales,
+                         dealer, leader, level, memberDate, memberTime, effective, temporary FROM `authorization`
+    </sql>
+
+    <insert id="insertBathKey" parameterType="hashmap">
+      INSERT INTO `authorization` (`key`, sales, dealer, leader) VALUES
+      <foreach collection="keyList" item="key" separator=",">
+          (#{key}, #{authorizationInfo.sales}, #{authorizationInfo.dealer}, #{authorizationInfo.leader})
+      </foreach>
+    </insert>
+
+    <select id="countKey" resultType="int" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo">
+        SELECT COUNT(*) FROM `authorization` WHERE `key`=#{key}
+    </select>
+
+    <select id="selectActiveByKey" resultType="int" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo">
+      SELECT active FROM `authorization` WHERE `key`=#{key}
+    </select>
+
+    <update id="updateActive"  parameterType="com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo">
+        UPDATE `authorization` SET mac=#{mac} , active=1, activeDate=now(),
+            activeTime=#{activeTime} WHERE `key`=#{key}
+    </update>
+
+    <select id="countOne" resultType="int" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo">
+        SELECT COUNT(*) from `authorization` WHERE `key`=#{key} and mac=#{mac}
+    </select>
+
+    <select id="selectOneById" resultMap="authorizationInfo" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo">
+        <include refid="select"/>WHERE id = #{id}
+    </select>
+
+    <select id="selectOneByKey" resultMap="authorizationInfo" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo">
+        <include refid="select"/>WHERE `key` = #{key}
+    </select>
+
+    <select id="selectActiveByLeader" resultMap="authorizationInfo" parameterType="String">
+        <include refid="select"/>
+        WHERE leader=#{_parameter} AND active=1
+    </select>
+
+    <select id="selectActiveBySales" resultMap="authorizationInfo" parameterType="String">
+        <include refid="select"/>
+        WHERE sales=#{_parameter} AND active=1
+    </select>
+
+    <select id="selectNegativeByLeader" resultMap="authorizationInfo" parameterType="String">
+        <include refid="select"/>
+        WHERE leader=#{_parameter} AND active=0
+    </select>
+
+    <update id="deactivateByDealer" parameterType="String">
+        UPDATE authorization SET effective=0 WHERE dealer=#{_parameter} AND active=1
+    </update>
+
+    <update id="deactivateBySales" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo">
+        UPDATE authorization SET effective=0 WHERE sales=#{sales} AND dealer=#{dealer} AND active=1
+    </update>
+
+    <update id="deactivateById" parameterType="int">
+        UPDATE authorization SET effective=0 WHERE id=#{_parameter}
+    </update>
+
+    <update id="activateByDealer" parameterType="String">
+        UPDATE authorization SET effective=1 WHERE dealer=#{_parameter} AND active=1
+    </update>
+
+    <update id="activateBySales" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo">
+        UPDATE authorization
+        SET effective=1
+        WHERE sales=#{sales}
+        AND dealer=#{dealer}
+        AND active=1
+    </update>
+
+    <update id="activateById" parameterType="int">
+        UPDATE authorization
+        SET effective=1
+        WHERE id=#{_parameter}
+    </update>
+
+    <select id="selectActive" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo" resultMap="authorizationInfo">
+        <include refid="select"/>
+        <where>
+            <if test="leader != null and !&quot;&quot;.equals(leader.trim())">
+                AND leader = #{leader}
+            </if>
+            <if test="dealer != null and !&quot;&quot;.equals(dealer.trim())">
+                AND dealer = #{dealer}
+            </if>
+            <if test="sales != null and !&quot;&quot;.equals(sales.trim())">
+                AND sales = #{sales}
+            </if>
+            <if test="level != null and level != 0">
+                AND level = #{level}
+            </if>
+            <if test="memberTime >0">
+                AND memberTime >= #{memberTime}
+            </if>
+            <if test="activeTime >0">
+                AND activeTime >= #{activeTime}
+            </if>
+        </where>
+        AND
+          active = 1
+    </select>
+
+    <select id="selectNegative" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo" resultMap="authorizationInfo">
+        <include refid="select"/>
+        <where>
+            <if test="leader != null and !&quot;&quot;.equals(leader.trim())">
+                AND leader = #{leader}
+            </if>
+            <if test="dealer != null and !&quot;&quot;.equals(dealer.trim())">
+                AND dealer = #{dealer}
+            </if>
+            <if test="sales != null and !&quot;&quot;.equals(sales.trim())">
+                AND sales = #{sales}
+            </if>
+        </where>
+        AND
+        active = 0
+    </select>
+
+    <update id="activate" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo">
+        UPDATE authorization
+        SET effective = 1
+        <where>
+            <if test="key != null and !&quot;&quot;.equals(key.trim())">
+                AND `key`= #{key}
+            </if>
+            <if test="sales != null and !&quot;&quot;.equals(sales.trim())">
+                AND sales= #{sales}
+            </if>
+            <if test="dealer != null and !&quot;&quot;.equals(dealer.trim())">
+                AND dealer= #{dealer}
+            </if>
+            <if test="leader != null and !&quot;&quot;.equals(leader.trim())">
+                AND leader= #{leader}
+            </if>
+        </where>
+        AND active = 1
+    </update>
+
+    <update id="deactivate" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo">
+        UPDATE authorization
+        SET effective = 0
+        <where>
+            <if test="key != null and !&quot;&quot;.equals(key.trim())">
+                AND `key`= #{key}
+            </if>
+            <if test="sales != null and !&quot;&quot;.equals(sales.trim())">
+                AND sales= #{sales}
+            </if>
+            <if test="dealer != null and !&quot;&quot;.equals(dealer.trim())">
+                AND dealer= #{dealer}
+            </if>
+            <if test="leader != null and !&quot;&quot;.equals(leader.trim())">
+                AND leader= #{leader}
+            </if>
+        </where>
+        AND active = 1
+    </update>
+
+    <update id="updateLevel" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo">
+        UPDATE `authorization`
+        SET level=#{level} , memberDate=#{memberDate} ,memberTime = #{memberTime}
+        WHERE id=#{id}
+    </update>
+
+    <update id="updateTemporary" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo">
+        UPDATE `authorization`
+        SET temporary=#{temporary}
+        <where>
+            <if test="key != null and !&quot;&quot;.equals(key.trim())">
+                AND `key`= #{key}
+            </if>
+            <if test="sales != null and !&quot;&quot;.equals(sales.trim())">
+                AND sales= #{sales}
+            </if>
+            <if test="dealer != null and !&quot;&quot;.equals(dealer.trim())">
+                AND dealer= #{dealer}
+            </if>
+            <if test="leader != null and !&quot;&quot;.equals(leader.trim())">
+                AND leader= #{leader}
+            </if>
+        </where>
+        AND active = 1
+    </update>
+
+</mapper>

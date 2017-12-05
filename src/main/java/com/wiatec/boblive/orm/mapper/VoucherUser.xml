@@ -1,0 +1,42 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wiatec.boblive.orm.dao.voucher.VoucherUserDao">
+    <resultMap type="com.wiatec.boblive.orm.pojo.voucher.VoucherUserInfo" id="voucherUserInfo">
+        <id column="id" property="id"/>
+        <result column="mac" property="mac"/>
+        <result column="category" property="category"/>
+        <result column="voucher_id" property="voucherId"/>
+        <result column="level" property="level"/>
+        <result column="month" property="month"/>
+        <result column="activate_time" property="activateTime"/>
+        <result column="expires_time" property="expiresTime"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <sql id="select">SELECT id, mac, category, voucher_id, level, month, activate_time, expires_time, create_time FROM voucher_user </sql>
+
+    <select id="countOneByMac" resultType="int" parameterType="com.wiatec.boblive.orm.pojo.voucher.VoucherUserInfo">
+        SELECT COUNT(*) FROM voucher_user WHERE mac=#{mac}
+    </select>
+
+    <insert id="insertOne" parameterType="com.wiatec.boblive.orm.pojo.voucher.VoucherUserInfo">
+        INSERT INTO voucher_user
+          (mac, category, voucher_id, level, month, activate_time, expires_time)
+        VALUES (#{mac}, #{category}, #{voucherId}, #{level}, #{month}, #{activateTime}, #{expiresTime})
+    </insert>
+
+    <update id="updateByMac" parameterType="com.wiatec.boblive.orm.pojo.voucher.VoucherUserInfo">
+        UPDATE voucher_user SET
+            category=#{category}, voucher_id=#{voucherId}, level=#{level}, month=#{month},
+            activate_time=#{activateTime}, expires_time=#{expiresTime}
+        WHERE mac=#{mac}
+    </update>
+
+    <select id="selectOneByMac" parameterType="String"
+            resultMap="voucherUserInfo">
+        <include refid="select"/>
+        WHERE mac=#{_parameter}
+    </select>
+
+</mapper>

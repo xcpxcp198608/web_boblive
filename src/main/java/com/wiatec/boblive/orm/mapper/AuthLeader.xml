@@ -1,0 +1,22 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wiatec.boblive.orm.dao.auth.AuthLeaderDao">
+    <resultMap type="com.wiatec.boblive.orm.pojo.auth.AuthLeaderInfo" id="authLeaderInfo">
+        <id column="id" property="id"/>
+        <result column="userName" property="userName"/>
+        <result column="password" property="password"/>
+    </resultMap>
+
+    <sql id="select">SELECT id, userName, password, registerTime, updateTime FROM auth_leader </sql>
+
+    <select id="countOne" resultType="Integer" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthLeaderInfo">
+        SELECT COUNT(*) FROM auth_leader WHERE userName=#{userName} AND password=#{password}
+    </select>
+
+    <select id="selectOne" resultMap="authLeaderInfo" parameterType="String">
+      <include refid="select"/>
+      WHERE userName=#{_parameter}
+    </select>
+
+</mapper>

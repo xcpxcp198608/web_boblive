@@ -1,0 +1,5 @@
+2017-12-04 15:32:37.230 [main] DEBUG c.w.b.voucher.VoucherMasterTest - true
+2017-12-04 15:35:14.776 [main] DEBUG c.w.b.voucher.VoucherMaster - https://pay.ws.test.ecoupon.pro/voucher/102616489468/confirm/0
+2017-12-04 15:35:17.299 [main] DEBUG c.w.b.voucher.VoucherMaster - {"result":0,"error":"Successful","voucher":{"id":102616489468,"amount":100,"owner":"000100000000000005","currency":"EUR","expiration":null}}
+2017-12-04 15:35:17.304 [main] DEBUG c.w.b.voucher.VoucherMaster - 1.0
+2017-12-04 15:35:17.304 [main] DEBUG c.w.b.voucher.VoucherMasterTest - true

@@ -1,0 +1,53 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wiatec.boblive.orm.dao.auth.AuthDealerDao">
+    <resultMap type="com.wiatec.boblive.orm.pojo.auth.AuthDealerInfo" id="authDealerInfo">
+        <id column="id" property="id"/>
+        <result column="userName" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="leader" property="leader"/>
+    </resultMap>
+
+    <sql id="select">SELECT id, userName, password, leader, registerTime, updateTime FROM auth_dealer </sql>
+
+    <select id="countOne" resultType="Integer" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthDealerInfo">
+        SELECT COUNT(*) FROM auth_dealer WHERE userName=#{userName} AND password=#{password}
+    </select>
+
+    <insert id="insertOne" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthDealerInfo">
+        INSERT INTO auth_dealer (userName, password, leader) VALUES (#{userName}, #{password},
+        #{leader})
+    </insert>
+
+    <update id="updatePassword" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthDealerInfo">
+        UPDATE auth_dealer SET password=#{password} WHERE userName=#{userName}
+    </update>
+
+    <delete id="deleteOne" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthDealerInfo">
+        DELETE FROM auth_dealer WHERE userName=#{userName}
+    </delete>
+
+    <select id="selectOne" resultMap="authDealerInfo" parameterType="String">
+        <include refid="select"/>
+        WHERE userName=#{_parameter}
+    </select>
+
+    <select id="select" resultMap="authDealerInfo" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthDealerInfo">
+        <include refid="select"/>
+        <where>
+            <if test="leader != null and !&quot;&quot;.equals(leader.trim())">
+                AND leader = #{leader}
+            </if>
+        </where>
+    </select>
+
+    <select id="getLeader" resultType="String" parameterType="String">
+        SELECT leader FROM auth_dealer WHERE userName=#{_parameter}
+    </select>
+
+    <select id="countUserName" resultType="int" parameterType="String">
+        SELECT COUNT(*) FROM auth_dealer WHERE userName=#{_parameter}
+    </select>
+
+</mapper>

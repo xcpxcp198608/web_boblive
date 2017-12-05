@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3f871096-109e-4c2f-8aaa-8c463c4a8113" name="wiatec-51.15.13.187" url="http://51.15.13.187">
+        <fileTransfer host="51.15.13.187" port="21" rootFolder="/home/patrick/javaweb">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

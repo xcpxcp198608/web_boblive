@@ -1,0 +1,24 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wiatec.boblive.orm.dao.ChannelErrorReportDao">
+    <resultMap type="com.wiatec.boblive.orm.pojo.ChannelErrorReportInfo" id="channelErrorReportInfo">
+        <id column="id" property="id"/>
+        <result column="userName" property="userName"/>
+        <result column="channelName" property="channelName"/>
+        <result column="message" property="message"/>
+        <result column="reportTime" property="reportTime"/>
+    </resultMap>
+
+    <sql id="select">SELECT id, userName, channelName, message, reportTime FROM channel_error_report</sql>
+
+    <select id="selectAll" resultType="com.wiatec.boblive.orm.pojo.ChannelErrorReportInfo">
+        <include refid="select"/>
+    </select>
+
+    <insert id="insertOne" parameterType="com.wiatec.boblive.orm.pojo.ChannelErrorReportInfo">
+        INSERT INTO channel_error_report (userName, channelName, message)
+        VALUES (#{userName}, #{channelName}, #{message})
+    </insert>
+
+</mapper>

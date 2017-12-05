@@ -1,0 +1,16 @@
+<updata>
+    <command force="false" name="update_with_script">
+        <url name="update.zip" locattr="/storage/external_storage/udisk0/update.zip" updatezip="true">
+            http://boblive.protv.company:8801/ota/20170926/update.zip
+        </url>
+        <md5 name="update.zip">85D19A19F89F2F84F111F3A7961AA5DB</md5>
+        <url name="factory_update_param.aml" locattr="/storage/external_storage/udisk0/factory_update_param.aml" updatezip="false">
+            http://boblive.protv.company:8801/ota/factory_update_param.aml
+        </url>
+        <md5 name="factory_update_param.aml">EBEBF1EDB5F720AB39534948026E5CEF</md5>
+        <storagemem>21083096</storagemem>
+        <description country="CN" language="zh">UPDATE TO THE LATEST VERSION ROM20170926</description>
+        <description country="TW" language="zh">UPDATE TO THE LATEST VERSION ROM20170926</description>
+        <description country="ELSE" language="en">UPDATE TO THE LATEST VERSION ROM20170926</description>
+    </command>
+</updata>

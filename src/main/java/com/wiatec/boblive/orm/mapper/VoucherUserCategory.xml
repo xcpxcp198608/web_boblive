@@ -1,0 +1,27 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wiatec.boblive.orm.dao.voucher.VoucherUserCategoryDao">
+    <resultMap type="com.wiatec.boblive.orm.pojo.voucher.VoucherUserCategoryInfo" id="voucherUserCategoryInfo">
+        <id column="id" property="id"/>
+        <result column="category" property="category"/>
+        <result column="level" property="level"/>
+        <result column="price" property="price"/>
+        <result column="bonus_start_month" property="startMonth"/>
+        <result column="bonus" property="bonus"/>
+        <result column="description" property="description"/>
+    </resultMap>
+
+    <sql id="select">SELECT id, category, level, price, bonus_start_month, bonus, description,
+                         create_time, modify_time FROM voucher_user_category </sql>
+
+    <select id="selectAll" resultMap="voucherUserCategoryInfo" >
+        <include refid="select"/>
+    </select>
+
+    <select id="selectOneByCategory" resultMap="voucherUserCategoryInfo" parameterType="String">
+        <include refid="select"/>
+        WHERE category=#{_parameter}
+    </select>
+
+</mapper>

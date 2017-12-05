@@ -1,0 +1,8 @@
+2017-12-02 10:46:04.277 [main] DEBUG c.w.b.voucher.VoucherMaster - 
+2017-12-02 10:48:38.373 [main] DEBUG c.w.b.voucher.VoucherMaster - https://pay.ws.test.ecoupon.pro/voucher/102557011057/confirm/0
+2017-12-02 10:48:41.322 [main] DEBUG c.w.b.voucher.VoucherMaster - 
+2017-12-02 10:52:57.302 [main] DEBUG c.w.b.voucher.VoucherMasterTest - {"result":0,"error":"Successful","transaction":{"id":"123abcDEF","status":1,"detail":"{"result":0,"error":"Successful","voucher":{"id":102128247362,"amount":100000,"owner":"000100000000000005","currency":"EUR","expiration":null}}"}}
+2017-12-02 10:56:09.554 [main] DEBUG c.w.b.voucher.VoucherMaster - https://pay.ws.test.ecoupon.pro/voucher/102557011057/confirm/0
+2017-12-02 10:56:12.958 [main] DEBUG c.w.b.voucher.VoucherMaster - {"result":104,"error":"Wrong authorization code","voucher":null}
+2017-12-02 12:06:10.620 [main] DEBUG c.w.b.voucher.VoucherMaster - {"result":0,"error":"Successful","transaction":{"id":"123abcDEF","status":1,"detail":"{"result":0,"error":"Successful","voucher":{"id":102128247362,"amount":100000,"owner":"000100000000000005","currency":"EUR","expiration":null}}"}}
+2017-12-02 12:11:24.692 [main] DEBUG c.w.b.voucher.VoucherMaster - {"result":0,"error":"Successful","transaction":{"id":"123abcDEF","status":1,"detail":"{"result":0,"error":"Successful","voucher":{"id":102128247362,"amount":100000,"owner":"000100000000000005","currency":"EUR","expiration":null}}"}}

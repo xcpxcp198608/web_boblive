@@ -1,0 +1,62 @@
+#header {
+    width: 100%;
+    height: 50px;
+    background-color: black
+}
+
+#header_content {
+    width: 90%;
+    margin: auto;
+}
+
+#header_logo {
+    margin-right: 50px;
+    color: darkred;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    float: left;
+}
+
+.header_navigation {
+    font-size: 15px;
+    display: block;
+    float: left;
+    width: 80px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    color: gray;
+}
+
+.header_navigation:hover {
+    color: white;
+    text-decoration: none;
+}
+
+#header_exit {
+    font-size: 12px;
+    display: block;
+    float: right;
+    width: 80px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    color: gray;
+}
+
+#header_exit:hover {
+    color: white;
+    text-decoration: none;
+}
+
+#header_content #txSearch{
+    width: 300px;
+    height: 30px;
+    background-color: antiquewhite;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-left: 50px;
+}

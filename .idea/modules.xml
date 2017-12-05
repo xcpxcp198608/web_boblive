@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/boblive.iml" filepath="$PROJECT_DIR$/.idea/modules/boblive.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/boblive_main.iml" filepath="$PROJECT_DIR$/.idea/modules/boblive_main.iml" group="boblive" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/boblive_test.iml" filepath="$PROJECT_DIR$/.idea/modules/boblive_test.iml" group="boblive" />
+    </modules>
+  </component>
+</project>

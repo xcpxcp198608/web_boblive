@@ -1,0 +1,23 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wiatec.boblive.orm.dao.ChannelTypeDao">
+    <resultMap type="com.wiatec.boblive.orm.pojo.ChannelTypeInfo" id="channelTypeInfo">
+        <id column="id" property="id"/>
+        <result column="tag" property="tag"/>
+        <result column="name" property="name"/>
+        <result column="icon" property="icon"/>
+        <result column="type" property="type"/>
+        <result column="flag" property="flag"/>
+        <result column="isLock" property="isLock"/>
+    </resultMap>
+
+    <sql id="select">SELECT id, tag, name, icon, type, flag, isLock FROM channel_type</sql>
+
+    <select id="selectByType" parameterType="String" resultType="com.wiatec.boblive.orm.pojo.ChannelTypeInfo">
+        <include refid="select"/>
+        WHERE type = #{_parameter}
+        ORDER BY name
+    </select>
+
+</mapper>

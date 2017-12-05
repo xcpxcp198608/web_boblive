@@ -1,0 +1,57 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wiatec.boblive.orm.dao.auth.AuthSalesDao">
+    <resultMap type="com.wiatec.boblive.orm.pojo.auth.AuthSalesInfo" id="salesInfo">
+        <id column="id" property="id"/>
+        <result column="userName" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="dealer" property="dealer"/>
+        <result column="leader" property="leader"/>
+    </resultMap>
+
+    <sql id="select">SELECT id, userName, password, dealer, leader, registerTime, updateTime FROM auth_sales </sql>
+
+    <select id="countOne" resultType="Integer" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthSalesInfo">
+        SELECT COUNT(*) FROM auth_sales WHERE userName=#{userName} AND password=#{password}
+    </select>
+
+    <insert id="insertOne" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthSalesInfo">
+        INSERT INTO auth_sales (userName, password, dealer, leader) VALUES (#{userName}, #{password}, #{dealer},
+        #{leader})
+    </insert>
+
+    <update id="updatePassword" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthSalesInfo">
+        UPDATE auth_sales SET password=#{password} WHERE userName=#{userName}
+    </update>
+
+    <delete id="deleteOne" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthSalesInfo">
+        DELETE FROM auth_sales WHERE userName=#{userName}
+    </delete>
+
+    <select id="selectOne" resultMap="salesInfo" parameterType="String">
+        <include refid="select"/>
+        WHERE userName=#{_parameter}
+    </select>
+
+    <select id="select" resultMap="salesInfo" parameterType="com.wiatec.boblive.orm.pojo.auth.AuthSalesInfo">
+        <include refid="select"/>
+        <where>
+            <if test="leader != null and !&quot;&quot;.equals(leader.trim())">
+                AND leader = #{leader}
+            </if>
+            <if test="dealer != null and !&quot;&quot;.equals(dealer.trim())">
+                AND dealer = #{dealer}
+            </if>
+        </where>
+    </select>
+
+    <select id="getDealer" resultType="String" parameterType="String">
+        SELECT dealer FROM auth_sales WHERE userName=#{_parameter}
+    </select>
+
+    <select id="countUserName" resultType="int" parameterType="String">
+        SELECT COUNT(*) FROM auth_sales WHERE userName=#{_parameter}
+    </select>
+
+</mapper>
