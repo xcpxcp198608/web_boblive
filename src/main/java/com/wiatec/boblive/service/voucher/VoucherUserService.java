@@ -46,12 +46,11 @@ public class VoucherUserService {
             int month = voucherUserInfo.getMonth();
             float price = voucherUserCategoryInfo.getPrice() * month;
             String transactionId = TokenUtil.create(voucherUserInfo.getMac(), System.currentTimeMillis() + "");
-
-            if(!VoucherMaster.pay(voucherUserInfo.getVoucherId(), price, transactionId)){
-                throw new XException(ResultMaster.error(1007, "voucher pay invalidate"));
-            }
-            float amount = VoucherMaster.confirm(voucherUserInfo.getVoucherId());
+            float amount = VoucherMaster.pay(voucherUserInfo.getVoucherId(), price, transactionId);
             if(amount < price){
+                throw new XException(ResultMaster.error(1007, "voucher amount no enough"));
+            }
+            if(!VoucherMaster.confirm(voucherUserInfo.getVoucherId(), price)){
                 throw new XException(ResultMaster.error(1007, "voucher pay confirm failed"));
             }
             voucherUserInfo.setLevel(voucherUserCategoryInfo.getLevel());
