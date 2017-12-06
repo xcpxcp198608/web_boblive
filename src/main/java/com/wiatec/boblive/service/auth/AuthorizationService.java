@@ -1,7 +1,10 @@
 package com.wiatec.boblive.service.auth;
 
+import com.wiatec.boblive.common.result.EnumResult;
+import com.wiatec.boblive.common.result.ResultInfo;
+import com.wiatec.boblive.common.result.ResultMaster;
+import com.wiatec.boblive.common.result.XException;
 import com.wiatec.boblive.common.utils.TokenUtil;
-import com.wiatec.boblive.entity.ResultInfo;
 import com.wiatec.boblive.listener.SessionListener;
 import com.wiatec.boblive.orm.dao.auth.AuthorizationDao;
 import com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo;
@@ -67,36 +70,23 @@ public class AuthorizationService {
         authorizationInfo.setActiveTime(System.currentTimeMillis());
         ResultInfo<AuthorizationInfo> resultInfo = new ResultInfo<>();
         if("wiatec".equals(key)){
-            resultInfo.setCode(ResultInfo.CODE_OK);
-            resultInfo.setStatus(ResultInfo.STATUS_OK);
-            resultInfo.setMessage("active success");
             authorizationInfo.setLevel((short) 8);
             authorizationInfo.setEffective(true);
             authorizationInfo.setTemporary(true);
-            resultInfo.setObj(authorizationInfo);
-            return resultInfo;
+            return ResultMaster.success(authorizationInfo);
         }
         if(authorizationDao.countKey(authorizationInfo) != 1){
-            resultInfo.setCode(ResultInfo.CODE_UNAUTHORIZED);
-            resultInfo.setStatus(ResultInfo.STATUS_UNAUTHORIZED);
-            resultInfo.setMessage("the key is incorrect");
-            return resultInfo;
+            throw new XException(EnumResult.ERROR_KEY_INCORRECT);
         }
         if(authorizationDao.selectActiveByKey(authorizationInfo) == 1){
             if(authorizationDao.countOne(authorizationInfo) == 1){
                 authorizationInfo = authorizationDao.selectOneByKey(authorizationInfo);
                 if(!authorizationInfo.isEffective()){
-                    resultInfo.setCode(ResultInfo.CODE_UNAUTHORIZED);
-                    resultInfo.setStatus(ResultInfo.STATUS_UNAUTHORIZED);
-                    resultInfo.setMessage("key effective error");
-                    return resultInfo;
+                    throw new XException(EnumResult.ERROR_KEY_DEACTIVATE);
                 }
                 return update(false, resultInfo, authorizationInfo);
             }else {
-                resultInfo.setCode(ResultInfo.CODE_UNAUTHORIZED);
-                resultInfo.setStatus(ResultInfo.STATUS_UNAUTHORIZED);
-                resultInfo.setMessage("this key already use");
-                return resultInfo;
+                throw new XException(EnumResult.ERROR_KEY_ALREADY_USE);
             }
         }
         return update(true, resultInfo, authorizationInfo);
@@ -107,16 +97,9 @@ public class AuthorizationService {
             if(update) {
                 authorizationDao.updateActive(authorizationInfo);
             }
-            resultInfo.setCode(ResultInfo.CODE_OK);
-            resultInfo.setStatus(ResultInfo.STATUS_OK);
-            resultInfo.setMessage("active success");
-            resultInfo.setObj(authorizationDao.selectOneByKey(authorizationInfo));
-            return resultInfo;
+            return ResultMaster.success(authorizationDao.selectOneByKey(authorizationInfo));
         }catch (Exception e){
-            resultInfo.setCode(ResultInfo.CODE_UNAUTHORIZED);
-            resultInfo.setStatus(ResultInfo.STATUS_UNAUTHORIZED);
-            resultInfo.setMessage("active failure");
-            return resultInfo;
+            throw new XException(ResultMaster.error(1009, "activate failure"));
         }
     }
 
@@ -131,20 +114,13 @@ public class AuthorizationService {
         AuthorizationInfo authorizationInfo = new AuthorizationInfo();
         authorizationInfo.setKey(key);
         authorizationInfo.setMac(mac);
-        ResultInfo<AuthorizationInfo> resultInfo = new ResultInfo<>();
         if("wiatec".equals(key)){
-            resultInfo.setCode(ResultInfo.CODE_OK);
-            resultInfo.setStatus(ResultInfo.STATUS_OK);
-            resultInfo.setMessage("true");
             authorizationInfo.setLevel((short) 8);
             authorizationInfo.setEffective(true);
             authorizationInfo.setTemporary(true);
-            resultInfo.setObj(authorizationInfo);
-            return resultInfo;
+            return ResultMaster.success(authorizationInfo);
         }
         if(authorizationDao.countOne(authorizationInfo) == 1){
-            resultInfo.setCode(ResultInfo.CODE_OK);
-            resultInfo.setStatus(ResultInfo.STATUS_OK);
             AuthorizationInfo authorizationInfo1 = authorizationDao.selectOneByKey(authorizationInfo);
             if(!authorizationInfo1.isTemporary()){
                 if(System.currentTimeMillis() < authorizationInfo1.getActiveTime() + TEMP_DURATION){
@@ -156,18 +132,14 @@ public class AuthorizationService {
                     }
                 }
             }
-            resultInfo.setObj(authorizationInfo1);
             HttpSession session = SessionListener.getKeySession(key);
             if(session == null){
                 session = request.getSession();
             }
             session.setAttribute("key", key);
-            return resultInfo;
+            return ResultMaster.success(authorizationInfo1);
         }else{
-            resultInfo.setCode(ResultInfo.CODE_UNAUTHORIZED);
-            resultInfo.setStatus(ResultInfo.STATUS_UNAUTHORIZED);
-            resultInfo.setMessage("validate failure");
-            return resultInfo;
+            throw new XException(ResultMaster.error(1009, "validate failure"));
         }
     }
 

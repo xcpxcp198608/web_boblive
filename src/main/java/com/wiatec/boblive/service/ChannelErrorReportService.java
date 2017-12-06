@@ -1,7 +1,10 @@
 package com.wiatec.boblive.service;
 
+import com.wiatec.boblive.common.result.EnumResult;
+import com.wiatec.boblive.common.result.ResultInfo;
+import com.wiatec.boblive.common.result.ResultMaster;
+import com.wiatec.boblive.common.result.XException;
 import com.wiatec.boblive.common.utils.TextUtil;
-import com.wiatec.boblive.entity.ResultInfo;
 import com.wiatec.boblive.orm.dao.ChannelErrorReportDao;
 import com.wiatec.boblive.orm.pojo.ChannelErrorReportInfo;
 import org.springframework.stereotype.Service;
@@ -27,17 +30,9 @@ public class ChannelErrorReportService {
     @Transactional
     public ResultInfo insertOne(ChannelErrorReportInfo channelErrorReportInfo){
         if(TextUtil.isEmpty(channelErrorReportInfo.getUserName())){
-            ResultInfo resultInfo = new ResultInfo();
-            resultInfo.setCode(ResultInfo.CODE_INVALID);
-            resultInfo.setStatus(ResultInfo.STATUS_INVALID);
-            resultInfo.setMessage("user name can not empty");
-            return resultInfo;
+            throw new XException(EnumResult.ERROR_USERNAME_NOT_EXISTS);
         }
         channelErrorReportDao.insertOne(channelErrorReportInfo);
-        ResultInfo resultInfo = new ResultInfo();
-        resultInfo.setCode(ResultInfo.CODE_OK);
-        resultInfo.setStatus(ResultInfo.STATUS_OK);
-        resultInfo.setMessage("send successfully");
-        return resultInfo;
+        return ResultMaster.success();
     }
 }

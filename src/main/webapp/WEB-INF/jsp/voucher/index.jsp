@@ -26,12 +26,12 @@
             integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
             crossorigin="anonymous"></script>
     <style type="text/css">
-        #div_sign_in {margin: 200px auto auto;  width: 400px; height: 300px; background-color: #82070d;
+        #div_sign_in {margin: 200px auto auto;  width: 400px; height: 300px; background-color: rgba(212, 201, 202, 0.41);
             box-shadow: 0 0 8px #aaa;}
         #div_sign_in_1 {width: 300px; height: 200px; margin: 25px auto auto}
         h3 {width: 100%; text-align: center; align-content: center}
         #error_message_sign_in {color: #ffe626; font-size: 16px}
-        #btSignIn {width: 100%; background-color: #07ae4a
+        #btSignIn {width: 100%; background-color: #82070d
         }
 
     </style>

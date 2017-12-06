@@ -11,4 +11,5 @@ public interface VoucherOrderDao {
 
     List<VoucherOrderInfo> selectAll();
     void insertOne(VoucherOrderInfo voucherOrderInfo);
+    void updateStatusToApproved(String transactionId);
 }

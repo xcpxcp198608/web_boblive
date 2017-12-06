@@ -50,5 +50,13 @@
             </div>
         </div>
     </div>
+
+    <div id="notice" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        background-color: rgba(0,0,0,0.3); z-index: 1001; display: none">
+        <div style="width:50%; margin: 300px auto">
+            <h4 id="notice_message" style="color: greenyellow; font-size: 20px; width: 100%;
+            text-align: center;"></h4>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,6 +1,6 @@
 package com.wiatec.boblive.api.base;
 
-import com.wiatec.boblive.entity.ResultInfo;
+import com.wiatec.boblive.common.result.ResultInfo;
 import com.wiatec.boblive.service.ChannelTypeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,8 +25,9 @@ public class ChannelType {
      * @return
      */
     @RequestMapping(value = "/{type}/{token}")
-    public @ResponseBody ResultInfo getByType(@PathVariable String type,
-                                              @PathVariable("token") String token){
+    public @ResponseBody
+    ResultInfo getByType(@PathVariable String type,
+                         @PathVariable("token") String token){
         return channelTypeService.selectByType(type, token);
     }
 }

@@ -1,7 +1,10 @@
 package com.wiatec.boblive.service;
 
+import com.wiatec.boblive.common.result.EnumResult;
+import com.wiatec.boblive.common.result.ResultInfo;
+import com.wiatec.boblive.common.result.ResultMaster;
+import com.wiatec.boblive.common.result.XException;
 import com.wiatec.boblive.common.utils.AESUtil;
-import com.wiatec.boblive.entity.ResultInfo;
 import com.wiatec.boblive.listener.SessionListener;
 
 import javax.servlet.http.Cookie;
@@ -23,22 +26,14 @@ public class BaseService<T> {
     protected ResultInfo<T> setListResult(String token , List<T> list){
         String tokenAfterDecrypt = AESUtil.decrypt(token,AESUtil.KEY);
         if(!tokenAfterDecrypt.startsWith("5c:41:e7")){
-            ResultInfo<T> resultInfo = new ResultInfo<>();
-            resultInfo.setCode(ResultInfo.CODE_UNAUTHORIZED);
-            resultInfo.setStatus(ResultInfo.STATUS_UNAUTHORIZED);
-            resultInfo.setMessage(tokenAfterDecrypt);
-            return resultInfo;
+            throw new XException(EnumResult.ERROR_TOKEN_INCORRECT);
         }
         ResultInfo<T> resultInfo = new ResultInfo<>();
         if(list == null || list.size() <= 0){
-            resultInfo.setCode(ResultInfo.CODE_NO_FOUND);
-            resultInfo.setStatus(ResultInfo.STATUS_NO_FOUND);
+            throw new XException(EnumResult.ERROR_RESOURCE_NOT_EXIST);
         }else{
-            resultInfo.setCode(ResultInfo.CODE_OK);
-            resultInfo.setStatus(ResultInfo.STATUS_OK);
-            resultInfo.setData(list);
+            return ResultMaster.success(list);
         }
-        return resultInfo;
     }
 
     private String getSessionIdFromRequest(HttpServletRequest request){

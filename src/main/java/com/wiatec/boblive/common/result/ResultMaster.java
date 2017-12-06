@@ -8,6 +8,13 @@ public class ResultMaster {
         return success(null);
     }
 
+    public static ResultInfo success (int code) {
+        ResultInfo resultInfo = new ResultInfo();
+        resultInfo.setCode(code);
+        resultInfo.setMessage(EnumResult.SUCCESS.getMessage());
+        return resultInfo;
+    }
+
     public static ResultInfo successBy (String message) {
         ResultInfo resultInfo = new ResultInfo();
         resultInfo.setCode(EnumResult.SUCCESS.getCode());

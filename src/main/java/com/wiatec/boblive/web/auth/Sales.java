@@ -1,6 +1,6 @@
 package com.wiatec.boblive.web.auth;
 
-import com.wiatec.boblive.entity.ResultInfo;
+import com.wiatec.boblive.common.result.ResultInfo;
 import com.wiatec.boblive.orm.pojo.auth.AuthDealerInfo;
 import com.wiatec.boblive.orm.pojo.auth.AuthSalesInfo;
 import com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo;
@@ -37,8 +37,9 @@ public class Sales extends BaseController {
     }
 
     @RequestMapping(value = "/create")
-    public @ResponseBody ResultInfo<AuthSalesInfo> create(HttpServletRequest request,
-                                                          @ModelAttribute AuthSalesInfo authSalesInfo){
+    public @ResponseBody
+    ResultInfo<AuthSalesInfo> create(HttpServletRequest request,
+                                     @ModelAttribute AuthSalesInfo authSalesInfo){
         validateRequest(request);
         System.out.println(authSalesInfo);
         return authSalesService.create(request, authSalesInfo);

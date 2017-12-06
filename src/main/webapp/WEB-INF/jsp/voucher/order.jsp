@@ -13,21 +13,7 @@
     <div style="width: 100%; ">
 
         <div>
-            <div style="width: 15%; display: block; float: left;">
-                <button type="button" class="btn btn-default" id="btActivate" title="activate">
-                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> A
-                </button>
-
-                <button type="button" class="btn btn-default" id="btLimited" title="limited">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span> L
-                </button>
-
-                <button type="button" class="btn btn-default" id="btCanceled" title="canceled">
-                    <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> C
-                </button>
-            </div>
-
-            <div style="width: 80%; display: block; float: left">
+            <div style="width: 95%; display: block; float: left">
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">Search</span>
                     <input type="text" class="form-control" placeholder="type in keyword (mac, voucher id, transaction id, time)"
@@ -40,19 +26,19 @@
             </div>
         </div>
         <br/>
-
+        <hr/>
 
         <div>
-            <table class="table table-bordered table-hover table-striped" id="tbOrders">
-                <thead>
+            <table class="table table-bordered table-hover table-striped table-condensed" id="tbOrders">
+                <thead style="background-color: black; color: #d4c9ca">
                     <tr>
                         <td>#</td>
                         <td>Mac</td>
                         <td>VoucherId</td>
                         <td>TransactionId</td>
-                        <td>Amount</td>
                         <td>TransactionTime</td>
-                        <td>Verify</td>
+                        <td>Amount</td>
+                        <td>Status</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,9 +48,16 @@
                             <td>${voucherOrderInfo.mac}</td>
                             <td>${voucherOrderInfo.voucherId}</td>
                             <td>${voucherOrderInfo.transactionId}</td>
-                            <td>${voucherOrderInfo.amount}</td>
                             <td>${voucherOrderInfo.createTime}</td>
-                            <td></td>
+                            <td>${voucherOrderInfo.amount}</td>
+                            <td>
+                                <c:if test="${voucherOrderInfo.status.equals('completed')}">
+                                    <a>${voucherOrderInfo.status}</a>
+                                </c:if>
+                                <c:if test="${voucherOrderInfo.status.equals('approved')}">
+                                    <a style="color: #07ae4a">${voucherOrderInfo.status}</a>
+                                </c:if>
+                            </td>
                         </tr>
                     </c:forEach>
                 </tbody>

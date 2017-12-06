@@ -1,8 +1,11 @@
 package com.wiatec.boblive.service.auth;
 
+import com.wiatec.boblive.common.result.EnumResult;
+import com.wiatec.boblive.common.result.ResultInfo;
+import com.wiatec.boblive.common.result.ResultMaster;
+import com.wiatec.boblive.common.result.XException;
 import com.wiatec.boblive.common.utils.TextUtil;
 import com.wiatec.boblive.common.utils.TokenUtil;
-import com.wiatec.boblive.entity.ResultInfo;
 import com.wiatec.boblive.listener.SessionListener;
 import com.wiatec.boblive.orm.dao.auth.AuthDealerDao;
 import com.wiatec.boblive.orm.dao.auth.AuthSalesDao;
@@ -62,12 +65,12 @@ public class Authorization1Service extends BaseService {
                 authorizationDao.deactivate(authorizationInfo);
             }
         }catch (Exception e){
-            return new ResultInfo(ResultInfo.CODE_SERVER_ERROR, ResultInfo.STATUS_SERVER_ERROR, "execute failure");
+            throw new XException(EnumResult.ERROR_EXECUTE_FAIL);
         }
         if(active) {
-            return new ResultInfo(ResultInfo.CODE_ACTIVATE_OK, ResultInfo.STATUS_OK, "activate success");
+            return ResultMaster.success();
         }else{
-            return new ResultInfo(ResultInfo.CODE_DEACTIVATE_OK, ResultInfo.STATUS_OK, "deactivate success");
+            return ResultMaster.success(201);
         }
     }
 
@@ -96,16 +99,9 @@ public class Authorization1Service extends BaseService {
             authorizationInfo1.setMemberDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(newTime)));
             authorizationInfo1.setLevel(authorizationInfo.getLevel());
             authorizationDao.updateLevel(authorizationInfo1);
-            resultInfo.setCode(ResultInfo.CODE_OK);
-            resultInfo.setStatus(ResultInfo.STATUS_OK);
-            resultInfo.setMessage("update successfully");
-            resultInfo.setObj(authorizationInfo1);
-            return resultInfo;
+            return ResultMaster.success(authorizationInfo1);
         }catch (Exception e){
-            resultInfo.setCode(ResultInfo.CODE_SERVER_ERROR);
-            resultInfo.setStatus(ResultInfo.STATUS_SERVER_ERROR);
-            resultInfo.setMessage("update failure");
-            return resultInfo;
+            throw new XException(EnumResult.ERROR_UPDATE_FAILURE);
         }
     }
 
@@ -118,23 +114,15 @@ public class Authorization1Service extends BaseService {
     @Transactional
     public ResultInfo<AuthorizationInfo> updateTemporary(HttpServletRequest request,
                                                          @ModelAttribute AuthorizationInfo authorizationInfo){
-        ResultInfo<AuthorizationInfo> resultInfo = new ResultInfo<>();
         try{
             authorizationDao.updateTemporary(authorizationInfo);
-            AuthorizationInfo authorizationInfo1;
+            AuthorizationInfo authorizationInfo1 = null;
             if(!TextUtil.isEmpty(authorizationInfo.getKey())){
                 authorizationInfo1 = authorizationDao.selectOneByKey(authorizationInfo);
-                resultInfo.setObj(authorizationInfo1);
             }
-            resultInfo.setCode(ResultInfo.CODE_OK);
-            resultInfo.setStatus(ResultInfo.STATUS_OK);
-            resultInfo.setMessage("update successfully");
-            return resultInfo;
+            return ResultMaster.success(authorizationInfo1);
         }catch (Exception e){
-            resultInfo.setCode(ResultInfo.CODE_SERVER_ERROR);
-            resultInfo.setStatus(ResultInfo.STATUS_SERVER_ERROR);
-            resultInfo.setMessage("update failure");
-            return resultInfo;
+            throw new XException(EnumResult.ERROR_UPDATE_FAILURE);
         }
     }
 

@@ -131,14 +131,13 @@ function showTotalCount() {
                 $("#notice_content").html("processing");
             },
             success: function (response) {
-                var data = eval(response);
-                $("#notice_content").html(data.message);
+                $("#notice_content").html(response.message);
                 setTimeout(function () {
                     $("#noticeFragment").css("display","none");
                 },500);
-                if(data.code == 202){
+                if(response.code === 200){
                     oStatus.src = "Resource/img/blue.png";
-                }else if(data.code == 203){
+                }else if(response.code === 201){
                     oStatus.src = "Resource/img/red.png";
                 }
             },
@@ -162,10 +161,9 @@ function showTotalCount() {
                 $("#notice_content").html("processing");
             },
             success: function (response) {
-                var json = eval(response);
-                oTr.cells[5].innerHTML = json.obj.level;
-                oTr.cells[7].innerHTML = json.obj.memberDate;
-                $("#notice_content").html(json.message);
+                oTr.cells[5].innerHTML = response.data.level;
+                oTr.cells[7].innerHTML = response.data.memberDate;
+                $("#notice_content").html(response.message);
                 setTimeout(function () {
                     $("#noticeFragment").css("display","none");
                 },500);
@@ -190,9 +188,8 @@ function showTotalCount() {
                 $("#notice_content").html("processing");
             },
             success: function (response) {
-                var json = eval(response);
-                if(json.code = 200) {
-                    if (json.obj.temporary) {
+                if(response.code = 200) {
+                    if (response.data.temporary) {
                         oTr.cells[9].children[0].children[0].checked = true;
                     }else {
                         oTr.cells[9].children[0].children[0].checked = false;
@@ -200,7 +197,7 @@ function showTotalCount() {
                 }else{
                     oTr.cells[9].children[0].children[0].checked = false;
                 }
-                $("#notice_content").html(json.message);
+                $("#notice_content").html(response.message);
                 setTimeout(function () {
                     $("#noticeFragment").css("display","none");
                 },500);

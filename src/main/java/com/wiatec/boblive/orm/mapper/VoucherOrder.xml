@@ -13,7 +13,7 @@
         <result column="create_time" property="createTime"/>
     </resultMap>
 
-    <sql id="select">SELECT id, mac, voucher_id, transaction_id, price, amount, create_time
+    <sql id="select">SELECT id, mac, voucher_id, transaction_id, price, amount, status, create_time
                      FROM voucher_order </sql>
 
     <select id="selectAll" resultMap="voucherOrderInfo">
@@ -24,4 +24,8 @@
         INSERT INTO voucher_order (mac, voucher_id, transaction_id, price, amount, status)
         VALUES (#{mac}, #{voucherId}, #{transactionId}, #{price},  #{amount}, #{status})
     </insert>
+
+    <update id="updateStatusToApproved" parameterType="String">
+        UPDATE voucher_order SET status='approved' WHERE transaction_id=#{_parameter}
+    </update>
 </mapper>

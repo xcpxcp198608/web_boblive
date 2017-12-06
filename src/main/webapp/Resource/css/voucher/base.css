@@ -27,3 +27,7 @@ body, div, ul, li ,p ,a ,span, form{
 .tdRows14 { font-size: 14px}
 
 .redFont {color: red}
+
+a {text-decoration: none; cursor: pointer; color: #505050
+}
+a:hover{text-decoration: none}

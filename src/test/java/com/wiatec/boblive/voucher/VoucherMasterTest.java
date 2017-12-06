@@ -1,6 +1,5 @@
 package com.wiatec.boblive.voucher;
 
-import com.wiatec.boblive.VoucherMaster;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

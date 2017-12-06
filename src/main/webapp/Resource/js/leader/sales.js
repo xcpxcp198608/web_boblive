@@ -7,7 +7,7 @@ $(function () {
     var oSearch = $("#txSearch").get(0);
 
     oSearch.onkeyup = function () {
-        if(oSearch.value == ""){
+        if(oSearch.value === ""){
             for(var i= 0; i < oTbody.rows.length; i ++){
                 oTbody.rows[i].style.display = "";
             }
@@ -54,8 +54,7 @@ $(function () {
                 $("#notice_content").html("processing");
             },
             success: function (response) {
-                var data = eval(response);
-                $("#notice_content").html(data.message);
+                $("#notice_content").html(response.message);
                 setTimeout(function () {
                     $("#noticeFragment").css("display","none");
                 },500);
@@ -99,7 +98,7 @@ $(function () {
     });
     $("#sDealer").change(function () {
         var index = this.selectedIndex;
-        if(index == 0){
+        if(index === 0){
             $("#btConfirm").css("disabled", "disabled");
             return;
         }
@@ -120,14 +119,13 @@ $(function () {
             data:{"dealer": dealer, "userName":userName, "password":password},
             dataType: "json",
             success: function (response) {
-                var json = eval(response);
-                if(json.code == 200){
+                if(response.code === 200){
                     var oTr = document.createElement("tr");
                     oTr.className = "tr1";
-                    for(var key in json.obj) {
-                        if(key != "leader") {
+                    for(var key in response.data) {
+                        if(key !== "leader") {
                             var oTd = document.createElement("td");
-                            oTd.innerHTML = json.obj[key];
+                            oTd.innerHTML = response.data[key];
                             oTd.setAttribute("align", "center");
                             oTr.appendChild(oTd);
                         }
@@ -135,13 +133,13 @@ $(function () {
                     oTbody.appendChild(oTr);
                     $("#createFragment").css("display","none");
                     $("#noticeFragment").css("display","block");
-                    $("#notice_content").html(json.message);
+                    $("#notice_content").html(response.message);
                     setTimeout(function () {
                         $("#noticeFragment").css("display","none");
                     },1000);
                 }else{
                     $("#createNotice").css("display","block");
-                    $("#createNotice").html(json.message);
+                    $("#createNotice").html(response.message);
                 }
             },
             error: function () {
@@ -149,7 +147,7 @@ $(function () {
                 $("#createNotice").html("communication error");
             }
         })
-    };
+    }
 
 /************************************************** update password ***************************************************/
 
@@ -173,8 +171,7 @@ $(function () {
                 $("#notice_content").html("processing");
             },
             success: function (response) {
-                var json = eval(response);
-                $("#notice_content").html(json.message);
+                $("#notice_content").html(response.message);
                 setTimeout(function () {
                     $("#noticeFragment").css("display","none");
                 },500);
@@ -194,9 +191,9 @@ $(function () {
 
 
 function updatePassword(obj) {
-    var password = prompt("type in password")
+    var password = prompt("type in password");
     if(textIsEmpty(password)){
-        alert("password format error")
+        alert("password format error");
         return false
     }
     obj.href += password

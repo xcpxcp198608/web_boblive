@@ -1,6 +1,6 @@
 package com.wiatec.boblive.web.auth;
 
-import com.wiatec.boblive.entity.ResultInfo;
+import com.wiatec.boblive.common.result.ResultInfo;
 import com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo;
 import com.wiatec.boblive.service.auth.Authorization1Service;
 import org.springframework.stereotype.Controller;
@@ -22,9 +22,10 @@ public class Auth1 extends BaseController {
     private Authorization1Service authorization1Service;
 
     @RequestMapping(value = "/activate")
-    public @ResponseBody ResultInfo activate(HttpServletRequest request,
-                                             @ModelAttribute AuthorizationInfo authorizationInfo,
-                                             String manager){
+    public @ResponseBody
+    ResultInfo activate(HttpServletRequest request,
+                        @ModelAttribute AuthorizationInfo authorizationInfo,
+                        String manager){
         validateRequest(request);
         return authorization1Service.activateOrDeactivate(request, authorizationInfo, manager, true);
     }

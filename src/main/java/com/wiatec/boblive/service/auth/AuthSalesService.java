@@ -1,7 +1,10 @@
 package com.wiatec.boblive.service.auth;
 
+import com.wiatec.boblive.common.result.EnumResult;
+import com.wiatec.boblive.common.result.ResultInfo;
+import com.wiatec.boblive.common.result.ResultMaster;
+import com.wiatec.boblive.common.result.XException;
 import com.wiatec.boblive.common.utils.TextUtil;
-import com.wiatec.boblive.entity.ResultInfo;
 import com.wiatec.boblive.orm.dao.auth.AuthDealerDao;
 import com.wiatec.boblive.orm.dao.auth.AuthSalesDao;
 import com.wiatec.boblive.orm.pojo.auth.AuthSalesInfo;
@@ -43,39 +46,23 @@ public class AuthSalesService extends BaseService {
     }
 
     public ResultInfo<AuthSalesInfo> create(HttpServletRequest request, AuthSalesInfo authSalesInfo){
-        ResultInfo<AuthSalesInfo> resultInfo = new ResultInfo<>();
         authSalesInfo = setAuthSalesInfo(request, authSalesInfo);
         try{
             if(TextUtil.isEmpty(authSalesInfo.getUserName())){
-                resultInfo.setCode(ResultInfo.CODE_INVALID);
-                resultInfo.setStatus(ResultInfo.STATUS_INVALID);
-                resultInfo.setMessage("sales name error");
-                return resultInfo;
+                throw new XException(EnumResult.ERROR_USERNAME_EMPTY);
             }
             if(TextUtil.isEmpty(authSalesInfo.getPassword())){
-                resultInfo.setCode(ResultInfo.CODE_INVALID);
-                resultInfo.setStatus(ResultInfo.STATUS_INVALID);
-                resultInfo.setMessage("sales password error");
-                return resultInfo;
+                throw new XException(EnumResult.ERROR_PASSWORD_EMPTY);
             }
             if(authSalesInfo.getUserName().length() < 5){
-                resultInfo.setCode(ResultInfo.CODE_INVALID);
-                resultInfo.setStatus(ResultInfo.STATUS_INVALID);
-                resultInfo.setMessage("sales name length < 5");
-                return resultInfo;
+                throw new XException(EnumResult.ERROR_USERNAME_FORMAT);
             }
             if(authSalesInfo.getPassword().length() < 6){
-                resultInfo.setCode(ResultInfo.CODE_INVALID);
-                resultInfo.setStatus(ResultInfo.STATUS_INVALID);
-                resultInfo.setMessage("password length < 6 ");
-                return resultInfo;
+                throw new XException(EnumResult.ERROR_PASSWORD_FORMAT);
             }
             authSalesInfo.setUserName("S"+authSalesInfo.getUserName());
             if(authSalesDao.countUserName(authSalesInfo.getUserName()) == 1){
-                resultInfo.setCode(ResultInfo.CODE_INVALID);
-                resultInfo.setStatus(ResultInfo.STATUS_INVALID);
-                resultInfo.setMessage("sales name already exists");
-                return resultInfo;
+                throw new XException(EnumResult.ERROR_USERNAME_EXISTS);
             }
             String manager = getCurrentUserName(request);
             if(!TextUtil.isEmpty(manager)) {
@@ -88,47 +75,26 @@ public class AuthSalesService extends BaseService {
                 }
             }
             authSalesDao.insertOne(authSalesInfo);
-            AuthSalesInfo authSalesInfo1 = authSalesDao.selectOne(authSalesInfo.getUserName());
-            resultInfo.setCode(ResultInfo.CODE_OK);
-            resultInfo.setStatus(ResultInfo.STATUS_OK);
-            resultInfo.setMessage("create successfully");
-            resultInfo.setObj(authSalesInfo1);
-            return resultInfo;
+            return ResultMaster.success(authSalesDao.selectOne(authSalesInfo.getUserName()));
         }catch (Exception e){
-            resultInfo.setCode(ResultInfo.CODE_SERVER_ERROR);
-            resultInfo.setStatus(ResultInfo.STATUS_SERVER_ERROR);
-            resultInfo.setMessage("create failure");
-            return resultInfo;
+            throw new XException(ResultMaster.error(1009, "create failure"));
         }
     }
 
 
     @Transactional
     public ResultInfo<AuthSalesInfo> updatePassword(HttpServletRequest request, AuthSalesInfo authSalesInfo){
-        ResultInfo<AuthSalesInfo> resultInfo = new ResultInfo<>();
         try{
             if(TextUtil.isEmpty(authSalesInfo.getUserName())){
-                resultInfo.setCode(ResultInfo.CODE_INVALID);
-                resultInfo.setStatus(ResultInfo.STATUS_INVALID);
-                resultInfo.setMessage("sales name format error");
-                return resultInfo;
+                throw new XException(EnumResult.ERROR_USERNAME_EMPTY);
             }
             if(TextUtil.isEmpty(authSalesInfo.getPassword())){
-                resultInfo.setCode(ResultInfo.CODE_INVALID);
-                resultInfo.setStatus(ResultInfo.STATUS_INVALID);
-                resultInfo.setMessage("sales password format error");
-                return resultInfo;
+                throw new XException(EnumResult.ERROR_PASSWORD_EMPTY);
             }
             authSalesDao.updatePassword(authSalesInfo);
-            resultInfo.setCode(ResultInfo.CODE_OK);
-            resultInfo.setStatus(ResultInfo.STATUS_OK);
-            resultInfo.setMessage("update successfully");
-            return resultInfo;
+            return ResultMaster.success();
         }catch (Exception e){
-            resultInfo.setCode(ResultInfo.CODE_SERVER_ERROR);
-            resultInfo.setStatus(ResultInfo.STATUS_SERVER_ERROR);
-            resultInfo.setMessage("update failure");
-            return resultInfo;
+            throw new XException(ResultMaster.error(1009, "update failure"));
         }
     }
 

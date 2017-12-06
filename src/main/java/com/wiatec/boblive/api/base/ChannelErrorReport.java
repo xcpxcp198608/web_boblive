@@ -1,6 +1,6 @@
 package com.wiatec.boblive.api.base;
 
-import com.wiatec.boblive.entity.ResultInfo;
+import com.wiatec.boblive.common.result.ResultInfo;
 import com.wiatec.boblive.orm.pojo.ChannelErrorReportInfo;
 import com.wiatec.boblive.service.ChannelErrorReportService;
 import org.springframework.stereotype.Controller;
@@ -30,7 +30,8 @@ public class ChannelErrorReport {
     }
 
     @RequestMapping(value = "/send")
-    public @ResponseBody ResultInfo insert(@ModelAttribute ChannelErrorReportInfo channelErrorReportInfo){
+    public @ResponseBody
+    ResultInfo insert(@ModelAttribute ChannelErrorReportInfo channelErrorReportInfo){
         return channelErrorReportService.insertOne(channelErrorReportInfo);
     }
 

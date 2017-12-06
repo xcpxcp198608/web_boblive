@@ -52,10 +52,9 @@ $(function () {
                 $("#notice_content").html("processing");
             },
             success: function (response) {
-                var json = eval(response);
-                oTr.cells[4].innerHTML = json.obj.level;
-                oTr.cells[6].innerHTML = json.obj.memberDate;
-                $("#notice_content").html(json.message);
+                oTr.cells[4].innerHTML = response.data.level;
+                oTr.cells[6].innerHTML = response.data.memberDate;
+                $("#notice_content").html(response.message);
                 setTimeout(function () {
                     $("#noticeFragment").css("display","none");
                 },500);

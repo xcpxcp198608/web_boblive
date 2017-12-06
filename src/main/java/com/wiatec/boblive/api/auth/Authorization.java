@@ -1,6 +1,6 @@
 package com.wiatec.boblive.api.auth;
 
-import com.wiatec.boblive.entity.ResultInfo;
+import com.wiatec.boblive.common.result.ResultInfo;
 import com.wiatec.boblive.service.auth.AuthorizationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +25,8 @@ public class Authorization {
      * @return
      */
     @RequestMapping(value = "/active", method = RequestMethod.POST)
-    public @ResponseBody ResultInfo active(@RequestParam String key, @RequestParam String mac){
+    public @ResponseBody
+    ResultInfo active(@RequestParam String key, @RequestParam String mac){
         return authorizationService.active(key, mac);
     }
 

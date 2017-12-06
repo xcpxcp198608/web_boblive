@@ -54,8 +54,7 @@ $(function () {
                 $("#notice_content").html("processing");
             },
             success: function (response) {
-                var data = eval(response);
-                $("#notice_content").html(data.message);
+                $("#notice_content").html(response.message);
                 setTimeout(function () {
                     $("#noticeFragment").css("display","none");
                 },500);
@@ -113,14 +112,13 @@ $(function () {
             data:{"userName":userName, "password":password},
             dataType: "json",
             success: function (response) {
-                var json = eval(response);
-                if(json.code == 200){
+                if(response.code === 200){
                     var oTr = document.createElement("tr");
                     oTr.className = "tr1";
-                    for(var key in json.obj) {
-                        if(key != "leader") {
+                    for(var key in response.data) {
+                        if(key !== "leader") {
                             var oTd = document.createElement("td");
-                            oTd.innerHTML = json.obj[key];
+                            oTd.innerHTML = response.data[key];
                             oTd.setAttribute("align", "center");
                             oTr.appendChild(oTd);
                         }
@@ -128,7 +126,7 @@ $(function () {
                     oTbody.appendChild(oTr);
                     $("#createFragment").css("display","none");
                     $("#noticeFragment").css("display","block");
-                    $("#notice_content").html(json.message);
+                    $("#notice_content").html(response.message);
                     setTimeout(function () {
                         $("#noticeFragment").css("display","none");
                     },1000);
@@ -166,8 +164,7 @@ $(function () {
                 $("#notice_content").html("processing");
             },
             success: function (response) {
-                var json = eval(response);
-                $("#notice_content").html(json.message);
+                $("#notice_content").html(response.message);
                 setTimeout(function () {
                     $("#noticeFragment").css("display","none");
                 },500);

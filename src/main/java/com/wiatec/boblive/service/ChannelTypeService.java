@@ -1,6 +1,6 @@
 package com.wiatec.boblive.service;
 
-import com.wiatec.boblive.entity.ResultInfo;
+import com.wiatec.boblive.common.result.ResultInfo;
 import com.wiatec.boblive.orm.dao.ChannelTypeDao;
 import com.wiatec.boblive.orm.pojo.ChannelTypeInfo;
 import org.springframework.stereotype.Service;
