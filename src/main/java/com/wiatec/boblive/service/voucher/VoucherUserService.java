@@ -12,6 +12,7 @@ import com.wiatec.boblive.orm.dao.voucher.VoucherUserDao;
 import com.wiatec.boblive.orm.pojo.voucher.VoucherOrderInfo;
 import com.wiatec.boblive.orm.pojo.voucher.VoucherUserCategoryInfo;
 import com.wiatec.boblive.orm.pojo.voucher.VoucherUserInfo;
+import com.wiatec.boblive.voucher.VoucherInfo;
 import com.wiatec.boblive.voucher.VoucherMaster;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,7 +46,8 @@ public class VoucherUserService {
             int month = voucherUserInfo.getMonth();
             float price = voucherUserCategoryInfo.getPrice() * month;
             String transactionId = TokenUtil.create(voucherUserInfo.getMac(), System.currentTimeMillis() + "");
-            float amount = VoucherMaster.pay(voucherUserInfo.getVoucherId(), price, transactionId);
+            VoucherInfo voucherInfo = VoucherMaster.pay(voucherUserInfo.getVoucherId(), transactionId);
+            float amount = voucherInfo.getVoucher().getAmount() / 100;
             if(amount < price){
                 throw new XException(ResultMaster.error(1007, "voucher amount no enough"));
             }
@@ -77,6 +79,16 @@ public class VoucherUserService {
             voucherOrderInfo.setVoucherId(voucherUserInfo.getVoucherId());
             voucherOrderInfo.setPrice(price);
             voucherOrderInfo.setAmount(amount);
+            voucherOrderInfo.setCurrency(voucherInfo.getVoucher().getCurrency());
+            voucherOrderInfo.setOwner(voucherInfo.getVoucher().getOwner());
+            voucherOrderInfo.setFirstName(voucherInfo.getUser().getFirstname());
+            voucherOrderInfo.setSurname(voucherInfo.getUser().getSurname());
+            voucherOrderInfo.setEmail(voucherInfo.getUser().getEmail());
+            voucherOrderInfo.setGender(voucherInfo.getUser().getGender());
+            voucherOrderInfo.setBirthday(voucherInfo.getUser().getBirthday());
+            voucherOrderInfo.setCountry(voucherInfo.getUser().getCountry());
+            voucherOrderInfo.setCity(voucherInfo.getUser().getCity());
+            voucherOrderInfo.setAddress(voucherInfo.getUser().getAddress());
             voucherOrderDao.insertOne(voucherOrderInfo);
             return ResultMaster.success(voucherUserInfo);
         }catch (Exception e){

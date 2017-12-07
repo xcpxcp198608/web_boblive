@@ -11,8 +11,8 @@ public class VoucherMasterTest {
 
     @Test
     public void pay() throws Exception {
-        float amount = VoucherMaster.pay("102616489468", 1.0f, "1231232345");
-        logger.debug(amount+"");
+        VoucherInfo voucherInfo = VoucherMaster.pay("102692089224", "12312323451");
+        logger.debug(voucherInfo.toString());
     }
 
     @Test

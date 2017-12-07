@@ -1,8 +1,6 @@
-2017-12-05 14:11:20.224 [main] DEBUG c.w.b.voucher.VoucherMaster - {"result":0,"error":"Successful","transaction":{"id":"0c59e3f694fd8232","status":1,"detail":"{"result":0,"error":"Successful","voucher":{"id":102641719624,"amount":100,"owner":"000100000000000005","currency":"EUR","expiration":null}}"}}
-2017-12-05 14:34:12.688 [main] DEBUG c.w.b.voucher.VoucherMaster - {"result":0,"error":"Successful","transaction":{"id":"0c59e3f694fd8232","status":1,"detail":{"result":0,"error":"Successful","voucher":{"id":102641719624,"amount":100,"owner":"000100000000000005","currency":"EUR","expiration":null}}}}
-2017-12-05 14:35:32.142 [main] DEBUG c.w.b.voucher.VoucherMaster - {"result":123,"error":"Unknown transaction id","transaction":null}
-2017-12-05 14:35:59.994 [main] DEBUG c.w.b.voucher.VoucherMaster - {"result":0,"error":"Successful","transaction":{"id":"56505d26ac6576c1","status":1,"detail":{"result":0,"error":"Successful","voucher":{"id":102638582084,"amount":100,"owner":"000100000000000005","currency":"EUR","expiration":null}}}}
-2017-12-05 14:36:00.004 [main] DEBUG c.w.b.voucher.VoucherMasterTest - true
-2017-12-05 14:36:14.852 [main] DEBUG c.w.b.voucher.VoucherMaster - {"result":0,"error":"Successful","transaction":{"id":"a16e66e67777bf52","status":1,"detail":{"result":0,"error":"Successful","voucher":{"id":102638310916,"amount":100,"owner":"000100000000000005","currency":"EUR","expiration":null}}}}
-2017-12-05 14:36:14.866 [main] DEBUG c.w.b.voucher.VoucherMasterTest - true
-2017-12-05 14:36:39.618 [main] DEBUG c.w.b.voucher.VoucherMaster - {"result":123,"error":"Unknown transaction id","transaction":null}
+2017-12-07 10:42:11.548 [main] DEBUG c.w.b.common.http.HttpsMaster - com.wiatec.boblive.common.result.XException: /home/patrick/javaweb/boblive/WEB-INF/classes/cert/cert.p12 (No such file or directory)
+2017-12-07 10:42:55.518 [main] DEBUG c.w.b.voucher.VoucherMaster - VoucherInfo{auth='N', error='Unknown error', result=2, user=null, voucher=null}
+2017-12-07 10:44:10.476 [main] DEBUG c.w.b.voucher.VoucherMaster - VoucherInfo{auth='N', error='Unknown error', result=2, user=null, voucher=null}
+2017-12-07 10:45:29.742 [main] DEBUG c.w.b.voucher.VoucherMaster - VoucherInfo{auth='N', error='Successful', result=0, user=UserBean{address='cc', birthday='2017-11-16', city='ss', country='CZ', email='000100000000000005@ecoupon.pro', firstName='patrick', gender='M', kycCheckDone='N', nickname='vps_47', surname='xu', zip=''}, voucher=VoucherBean{amount=200, currency='EUR', expiration='null', id=102692089224, owner='000100000000000005'}}
+2017-12-07 10:45:29.751 [main] DEBUG c.w.b.voucher.VoucherMaster - 2.0
+2017-12-07 10:45:29.751 [main] DEBUG c.w.b.voucher.VoucherMasterTest - 2.0

@@ -1,6 +1,7 @@
 package com.wiatec.boblive.voucher;
 
 
+import com.google.gson.Gson;
 import com.wiatec.boblive.common.http.HttpsMaster;
 import com.wiatec.boblive.common.result.ResultMaster;
 import com.wiatec.boblive.common.result.XException;
@@ -17,19 +18,18 @@ public class VoucherMaster {
     private static final String BASE_URL = "https://pay.ws.test.ecoupon.pro";
     private static final String KIOSK_ID = "14";
 
-    public static float pay(String voucherId, float price, String transactionId) throws Exception {
+    public static VoucherInfo pay(String voucherId, String transactionId) throws Exception {
         String url  = BASE_URL + "/voucher/" + voucherId + "/pay/kiosk/" + KIOSK_ID + "/lang/en/trn/" + transactionId;
         String result = HttpsMaster.get(url).execute();
-        JSONObject jsonObject = new JSONObject(result);
-        int code = jsonObject.getInt("result");
-        String message = jsonObject.getString("error");
-        if(code !=0){
-            throw new XException(ResultMaster.error(10003, message));
+        VoucherInfo voucherInfo = new Gson().fromJson(result, VoucherInfo.class);
+        if(voucherInfo == null){
+            throw new XException(ResultMaster.error(10003, "json parse error"));
         }
-        JSONObject voucher = jsonObject.getJSONObject("voucher");
-        float amount = voucher.getLong("amount") / 100;
-        logger.debug(amount+"");
-        return amount;
+        if(voucherInfo.getResult() != 0){
+            throw new XException(ResultMaster.error(10003, voucherInfo.getError()));
+        }
+        logger.debug(voucherInfo.toString());
+        return voucherInfo;
     }
 
     public static boolean confirm(String voucherId, float price) throws Exception{

@@ -9,11 +9,23 @@
         <result column="transaction_id" property="transactionId"/>
         <result column="price" property="price"/>
         <result column="amount" property="amount"/>
+        <result column="currency" property="currency"/>
         <result column="status" property="status"/>
+        <result column="owner" property="owner"/>
+        <result column="first_name" property="firstName"/>
+        <result column="surname" property="surname"/>
+        <result column="email" property="email"/>
+        <result column="gender" property="gender"/>
+        <result column="birthday" property="birthday"/>
+        <result column="country" property="country"/>
+        <result column="city" property="city"/>
+        <result column="address" property="address"/>
         <result column="create_time" property="createTime"/>
     </resultMap>
 
-    <sql id="select">SELECT id, mac, voucher_id, transaction_id, price, amount, status, create_time
+    <sql id="select">SELECT id, mac, voucher_id, transaction_id, price, amount, currency, status,
+                         owner, first_name, surname, email, gender, birthday, country, city,
+                         address, create_time
                      FROM voucher_order </sql>
 
     <select id="selectAll" resultMap="voucherOrderInfo">
@@ -21,8 +33,12 @@
     </select>
 
     <insert id="insertOne" parameterType="com.wiatec.boblive.orm.pojo.voucher.VoucherOrderInfo">
-        INSERT INTO voucher_order (mac, voucher_id, transaction_id, price, amount, status)
-        VALUES (#{mac}, #{voucherId}, #{transactionId}, #{price},  #{amount}, #{status})
+        INSERT INTO voucher_order (mac, voucher_id, transaction_id, price, amount, currency, status,
+                                   owner, first_name, surname, email, gender, birthday, country, city,
+                                   address)
+        VALUES (#{mac}, #{voucherId}, #{transactionId}, #{price},  #{amount}, #{currency}, #{status},
+                #{owner}, #{firstName}, #{surname}, #{email}, #{gender}, #{birthday}, #{country},
+                #{city}, #{address})
     </insert>
 
     <update id="updateStatusToApproved" parameterType="String">

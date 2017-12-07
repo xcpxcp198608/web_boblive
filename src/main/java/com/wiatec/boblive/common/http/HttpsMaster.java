@@ -27,7 +27,7 @@ public class HttpsMaster {
     private static Logger logger = LoggerFactory.getLogger(HttpsMaster.class);
     private static String path = Thread.currentThread().getContextClassLoader().getResource("/").getPath();
     private static final String KEY_STORE_FILE="cert/cert.p12";
-//    private static final String KEY_STORE_FILE="/home/patrick/javaweb/boblive/WEB-INF/classes/cert/cert.p12";
+//    private static final String KEY_STORE_FILE="/Users/xuchengpeng/IdeaProjects/boblive/src/main/resources/cert/cert.p12";
     private static final String KEY_STORE_PASS="123456";
 
     /*
@@ -98,7 +98,6 @@ public class HttpsMaster {
         KeyStore keyStore=null;
         try {
             keyStore = KeyStore.getInstance("PKCS12");
-            logger.debug(path + KEY_STORE_FILE);
             FileInputStream fis = new FileInputStream(new File(path + KEY_STORE_FILE));
             keyStore.load(fis, KEY_STORE_PASS.toCharArray());
             fis.close();

@@ -7,48 +7,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f758629f-63b6-49c7-9950-6deb20eda91c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/entity/ResultInfo.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/dao/ChannelCZDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/dao/ChannelSKDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/mapper/ChannelCZ.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/mapper/ChannelSK.xml" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/VoucherMaster.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/voucher/VoucherMaster.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/voucher/VoucherInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/Gradle___com_wiatec___boblive_1_0_SNAPSHOT_war__exploded_.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Gradle___com_wiatec___boblive_1_0_SNAPSHOT_war__exploded_.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/ecdfae69-242f-4d10-8367-734bbd6aa22c.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/ecdfae69-242f-4d10-8367-734bbd6aa22c.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/boblive_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/boblive_main.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/boblive_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/boblive_test.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/api/auth/Authorization.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/api/auth/Authorization.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/api/base/Channel.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/api/base/Channel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/api/base/ChannelErrorReport.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/api/base/ChannelErrorReport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/api/base/ChannelType.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/api/base/ChannelType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/common/result/EnumResult.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/common/result/EnumResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/common/result/ResultMaster.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/common/result/ResultMaster.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/dao/voucher/VoucherOrderDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/dao/voucher/VoucherOrderDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/common/http/HttpsMaster.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/common/http/HttpsMaster.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/mapper/VoucherOrder.xml" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/mapper/VoucherOrder.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/BaseService.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/BaseService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/ChannelErrorReportService.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/ChannelErrorReportService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/ChannelService.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/ChannelService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/ChannelTypeService.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/ChannelTypeService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/auth/AuthDealerService.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/auth/AuthDealerService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/auth/AuthSalesService.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/auth/AuthSalesService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/auth/Authorization1Service.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/auth/Authorization1Service.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/auth/AuthorizationService.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/auth/AuthorizationService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/voucher/VoucherOrderService.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/voucher/VoucherOrderService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/pojo/voucher/VoucherOrderInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/pojo/voucher/VoucherOrderInfo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/voucher/VoucherUserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/voucher/VoucherUserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/web/auth/Auth1.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/web/auth/Auth1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/web/auth/Dealer.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/web/auth/Dealer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/web/auth/Sales.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/web/auth/Sales.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/web/voucher/Order.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/web/voucher/Order.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/Resource/css/voucher/base.css" afterPath="$PROJECT_DIR$/src/main/webapp/Resource/css/voucher/base.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/Resource/js/dealer/active.js" afterPath="$PROJECT_DIR$/src/main/webapp/Resource/js/dealer/active.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/Resource/js/dealer/negative.js" afterPath="$PROJECT_DIR$/src/main/webapp/Resource/js/dealer/negative.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/Resource/js/dealer/sales.js" afterPath="$PROJECT_DIR$/src/main/webapp/Resource/js/dealer/sales.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/Resource/js/leader/active.js" afterPath="$PROJECT_DIR$/src/main/webapp/Resource/js/leader/active.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/Resource/js/leader/dealer.js" afterPath="$PROJECT_DIR$/src/main/webapp/Resource/js/leader/dealer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/Resource/js/leader/negative.js" afterPath="$PROJECT_DIR$/src/main/webapp/Resource/js/leader/negative.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/Resource/js/leader/sales.js" afterPath="$PROJECT_DIR$/src/main/webapp/Resource/js/leader/sales.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/Resource/js/voucher/order.js" afterPath="$PROJECT_DIR$/src/main/webapp/Resource/js/voucher/order.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/voucher/base_voucher.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/voucher/base_voucher.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/voucher/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/voucher/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/voucher/order.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/voucher/order.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/voucher/VoucherMaster.java" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/voucher/VoucherMaster.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/wiatec/boblive/voucher/VoucherMasterTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/wiatec/boblive/voucher/VoucherMasterTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web_logs/boblive/logFile.log" afterPath="$PROJECT_DIR$/web_logs/boblive/logFile.log" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -291,8 +264,8 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4536030281000" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="3234802626" />
+        <entry key="$PROJECT_DIR$" value="4536630850000" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="3451572160" />
         <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="615277776" />
       </map>
     </option>
@@ -467,9 +440,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/mapper/VoucherUserCategory.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/dao/voucher/VoucherUserCategoryDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/common/utils/TimeUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/pojo/voucher/VoucherUserInfo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/dao/voucher/VoucherUserDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/mapper/VoucherUser.xml" />
@@ -478,12 +448,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/web/voucher/Admin.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/Resource/js/voucher/index.js" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ecdfae69-242f-4d10-8367-734bbd6aa22c/console.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/pojo/voucher/VoucherOrderInfo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/UpgradeService.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/wiatec/boblive/voucher/PathTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/voucher/VoucherUserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/common/http/HttpsMaster.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/wiatec/boblive/voucher/VoucherMasterTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/ChannelErrorReportService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/api/auth/Authorization.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/auth/AuthorizationService.java" />
@@ -514,10 +480,17 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/voucher/order.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/voucher/base_voucher.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/dao/voucher/VoucherOrderDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/mapper/VoucherOrder.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/voucher/VoucherMaster.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/voucher/VoucherOrderService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/Resource/js/voucher/order.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/voucher/VoucherInfo.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/mapper/AdImage.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/common/http/HttpsMaster.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/voucher/VoucherMaster.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/wiatec/boblive/voucher/VoucherMasterTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/pojo/voucher/VoucherOrderInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/voucher/VoucherUserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/mapper/VoucherOrder.xml" />
       </list>
     </option>
   </component>
@@ -556,10 +529,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -639,6 +612,16 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="boblive" type="462c0819:PsiDirectoryNode" />
               <item name="orm" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boblive" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boblive" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="boblive" type="462c0819:PsiDirectoryNode" />
+              <item name="orm" type="462c0819:PsiDirectoryNode" />
               <item name="pojo" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -659,6 +642,17 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="boblive" type="462c0819:PsiDirectoryNode" />
+              <item name="orm" type="462c0819:PsiDirectoryNode" />
+              <item name="pojo" type="462c0819:PsiDirectoryNode" />
+              <item name="voucher" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boblive" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boblive" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="boblive" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -679,6 +673,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="boblive" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="voucher" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boblive" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boblive" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="boblive" type="462c0819:PsiDirectoryNode" />
               <item name="voucher" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -709,6 +712,21 @@
               <item name="boblive" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="voucher" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boblive" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boblive" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boblive" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boblive" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="cert" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="boblive" type="b2602c69:ProjectViewProjectNode" />
@@ -828,6 +846,36 @@
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="jsp" type="462c0819:PsiDirectoryNode" />
+              <item name="voucher" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boblive" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boblive" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="boblive" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boblive" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boblive" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boblive" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="boblive" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boblive" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boblive" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="boblive" type="462c0819:PsiDirectoryNode" />
               <item name="voucher" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -1171,16 +1219,16 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.PathTest.getPath" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.VoucherMasterTest.verifyTransaction" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.VoucherMasterTest.validate" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.VoucherMasterTest.pay" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.VoucherMasterTest.pay" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.PathTest.getPath" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.VoucherMasterTest.verifyTransaction" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.VoucherMasterTest.validate" />
         <item index="4" class="java.lang.String" itemvalue="Application.HttpsUrlConnection" />
       </list>
     </recent_temporary>
   </component>
   <component name="SbtLocalSettings">
-    <option name="lastUpdateTimestamp" value="1512012219047" />
+    <option name="lastUpdateTimestamp" value="1512612793701" />
     <option name="externalProjectsViewState">
       <projects_view />
     </option>
@@ -1205,7 +1253,13 @@
       <workItem from="1512352754937" duration="5580000" />
       <workItem from="1512441907751" duration="3902000" />
       <workItem from="1512452684058" duration="15300000" />
-      <workItem from="1512523958240" duration="8767000" />
+      <workItem from="1512523958240" duration="8833000" />
+      <workItem from="1512611738369" duration="84000" />
+      <workItem from="1512611860720" duration="1482000" />
+      <workItem from="1512613730785" duration="146000" />
+      <workItem from="1512613923501" duration="71000" />
+      <workItem from="1512614026802" duration="118000" />
+      <workItem from="1512614189485" duration="2331000" />
     </task>
     <task id="LOCAL-00001" summary="201712051520">
       <created>1512458532736</created>
@@ -1228,24 +1282,31 @@
       <option name="project" value="LOCAL" />
       <updated>1512465019051</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="201712061340">
+      <created>1512539054363</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1512539054363</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PathTest_getPath - 2017.12.05 at 16h 53m 34s.xml">
-      <configuration name="PathTest.getPath" configurationId="JUnit" />
+    <history-entry file="VoucherMasterTest_pay - 2017.12.07 at 10h 41m 20s.xml">
+      <configuration name="VoucherMasterTest.pay" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PathTest_getPath - 2017.12.05 at 16h 55m 21s.xml">
-      <configuration name="PathTest.getPath" configurationId="JUnit" />
+    <history-entry file="VoucherMasterTest_pay - 2017.12.07 at 10h 42m 12s.xml">
+      <configuration name="VoucherMasterTest.pay" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VoucherMasterTest_verifyTransaction - 2017.12.02 at 12h 06m 11s.xml">
-      <configuration name="VoucherMasterTest.verifyTransaction" configurationId="JUnit" />
+    <history-entry file="VoucherMasterTest_pay - 2017.12.07 at 10h 42m 55s.xml">
+      <configuration name="VoucherMasterTest.pay" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VoucherMasterTest_verifyTransaction - 2017.12.02 at 12h 11m 25s.xml">
-      <configuration name="VoucherMasterTest.verifyTransaction" configurationId="JUnit" />
+    <history-entry file="VoucherMasterTest_pay - 2017.12.07 at 10h 44m 10s.xml">
+      <configuration name="VoucherMasterTest.pay" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="VoucherMasterTest_verifyTransaction - 2017.12.05 at 14h 11m 20s.xml">
-      <configuration name="VoucherMasterTest.verifyTransaction" configurationId="JUnit" />
+    <history-entry file="VoucherMasterTest_pay - 2017.12.07 at 10h 45m 30s.xml">
+      <configuration name="VoucherMasterTest.pay" configurationId="JUnit" />
     </history-entry>
     <history-entry file="VoucherMasterTest_verifyTransaction - 2017.12.05 at 14h 34m 13s.xml">
       <configuration name="VoucherMasterTest.verifyTransaction" configurationId="JUnit" />
@@ -1264,13 +1325,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68237000" />
+    <option name="totallyTimeSpent" value="72535000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="896" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36697248" sideWeight="0.5028818" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32896462" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1278,26 +1339,26 @@
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18299712" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16066283" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16066283" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36173" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896462" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896462" sideWeight="0.49711815" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32896462" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36697248" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36697248" sideWeight="0.49711815" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896462" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24063401" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18299712" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896462" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1306,8 +1367,8 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32896462" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896462" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896462" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1319,7 +1380,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="201712051520" />
     <MESSAGE value="201712051710" />
-    <option name="LAST_COMMIT_MESSAGE" value="201712051710" />
+    <MESSAGE value="201712061340" />
+    <option name="LAST_COMMIT_MESSAGE" value="201712061340" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1339,88 +1401,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/wiatec/boblive/service/c.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="14" lean-forward="false" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_logs/boblive/logFile.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider">
-        <state relative-caret-position="136">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_logs/boblive/log_2017-12-04.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_logs/boblive/log_2017-12-02.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/ChannelErrorReportService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/BaseService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-374">
-          <caret line="33" column="14" lean-forward="false" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/ChannelTypeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/api/base/ChannelErrorReport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="37" column="1" lean-forward="false" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/api/base/ChannelType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="14" column="11" lean-forward="false" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1438,9 +1422,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="24" column="19" lean-forward="false" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1448,7 +1429,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
           <caret line="39" column="4" lean-forward="false" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1461,7 +1441,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="56" column="50" lean-forward="false" selection-start-line="56" selection-start-column="50" selection-end-line="56" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1477,7 +1456,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="166" column="50" lean-forward="false" selection-start-line="166" selection-start-column="50" selection-end-line="166" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1520,7 +1498,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="9" lean-forward="false" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1528,7 +1505,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="56" column="50" lean-forward="false" selection-start-line="56" selection-start-column="50" selection-end-line="56" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1536,10 +1512,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
           <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-          <folding>
-            <element signature="e#136#137#0" expanded="false" />
-            <element signature="e#172#173#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1565,7 +1537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
           <caret line="141" column="17" lean-forward="false" selection-start-line="141" selection-start-column="17" selection-end-line="141" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1573,7 +1544,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
           <caret line="174" column="17" lean-forward="true" selection-start-line="170" selection-start-column="16" selection-end-line="174" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1581,7 +1551,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1768">
           <caret line="104" column="18" lean-forward="false" selection-start-line="104" selection-start-column="18" selection-end-line="104" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1589,7 +1558,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1597,7 +1565,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1122">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1605,7 +1572,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
           <caret line="233" column="14" lean-forward="true" selection-start-line="233" selection-start-column="14" selection-end-line="233" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1613,7 +1579,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
           <caret line="28" column="31" lean-forward="true" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1629,7 +1594,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="32" column="30" lean-forward="true" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1645,7 +1609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-905">
           <caret line="12" column="22" lean-forward="true" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1661,24 +1624,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="59" column="10" lean-forward="false" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
-          <folding>
-            <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#h4#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/mapper/VoucherOrder.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="28" column="84" lean-forward="false" selection-start-line="28" selection-start-column="84" selection-end-line="28" selection-end-column="84" />
-          <folding>
-            <marker date="1512527335969" expanded="true" signature="760:865" ph="SELECT id, u... voucher_admin" />
-            <marker date="1512527335969" expanded="true" signature="760:878" ph="SELECT id, t... voucher_order" />
-            <marker date="1512527335969" expanded="true" signature="1098:1269" ph="INSERT INTO voucher_order... " />
-            <marker date="1512527335969" expanded="true" signature="1357:1434" ph="UPDATE vouch... " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1686,23 +1632,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="13" column="31" lean-forward="false" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/voucher/VoucherMaster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="19" column="98" lean-forward="false" selection-start-line="19" selection-start-column="98" selection-end-line="19" selection-end-column="98" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/voucher/VoucherUserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="88" column="64" lean-forward="false" selection-start-line="88" selection-start-column="64" selection-end-line="88" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1711,8 +1640,8 @@
         <state relative-caret-position="177">
           <caret line="28" column="17" lean-forward="false" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
           <folding>
-            <element signature="e#766#767#0" expanded="true" />
-            <element signature="e#816#817#0" expanded="true" />
+            <element signature="e#766#767#0" expanded="false" />
+            <element signature="e#816#817#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1731,7 +1660,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="53" column="9" lean-forward="false" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1739,7 +1667,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="52" column="9" lean-forward="true" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1763,7 +1690,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="11" column="27" lean-forward="true" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1771,7 +1697,190 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/voucher/VoucherInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2941">
+          <caret line="173" column="22" lean-forward="false" selection-start-line="173" selection-start-column="22" selection-end-line="173" selection-end-column="22" />
+          <folding>
+            <element signature="e#640#641#0" expanded="true" />
+            <element signature="e#667#668#0" expanded="true" />
+            <element signature="e#707#708#0" expanded="true" />
+            <element signature="e#739#740#0" expanded="true" />
+            <element signature="e#771#772#0" expanded="true" />
+            <element signature="e#799#800#0" expanded="true" />
+            <element signature="e#841#842#0" expanded="true" />
+            <element signature="e#875#876#0" expanded="true" />
+            <element signature="e#905#906#0" expanded="true" />
+            <element signature="e#934#935#0" expanded="true" />
+            <element signature="e#975#976#0" expanded="true" />
+            <element signature="e#1011#1012#0" expanded="true" />
+            <element signature="e#1044#1045#0" expanded="true" />
+            <element signature="e#1071#1072#0" expanded="true" />
+            <element signature="e#1113#1114#0" expanded="true" />
+            <element signature="e#1145#1146#0" expanded="true" />
+            <element signature="e#1184#1185#0" expanded="true" />
+            <element signature="e#1214#1215#0" expanded="true" />
+            <element signature="e#1265#1266#0" expanded="true" />
+            <element signature="e#1303#1304#0" expanded="true" />
+            <element signature="e#2056#2057#0" expanded="true" />
+            <element signature="e#2094#2095#0" expanded="true" />
+            <element signature="e#2144#2145#0" expanded="true" />
+            <element signature="e#2190#2191#0" expanded="true" />
+            <element signature="e#2229#2230#0" expanded="true" />
+            <element signature="e#2268#2269#0" expanded="true" />
+            <element signature="e#2320#2321#0" expanded="true" />
+            <element signature="e#2368#2369#0" expanded="true" />
+            <element signature="e#2403#2404#0" expanded="true" />
+            <element signature="e#2438#2439#0" expanded="true" />
+            <element signature="e#2482#2483#0" expanded="true" />
+            <element signature="e#2522#2523#0" expanded="true" />
+            <element signature="e#2560#2561#0" expanded="true" />
+            <element signature="e#2598#2599#0" expanded="true" />
+            <element signature="e#2648#2649#0" expanded="true" />
+            <element signature="e#2694#2695#0" expanded="true" />
+            <element signature="e#2730#2731#0" expanded="true" />
+            <element signature="e#2766#2767#0" expanded="true" />
+            <element signature="e#2812#2813#0" expanded="true" />
+            <element signature="e#2854#2855#0" expanded="true" />
+            <element signature="e#2894#2895#0" expanded="true" />
+            <element signature="e#2934#2935#0" expanded="true" />
+            <element signature="e#2988#2989#0" expanded="true" />
+            <element signature="e#3038#3039#0" expanded="true" />
+            <element signature="e#3075#3076#0" expanded="true" />
+            <element signature="e#3112#3113#0" expanded="true" />
+            <element signature="e#3160#3161#0" expanded="true" />
+            <element signature="e#3204#3205#0" expanded="true" />
+            <element signature="e#3247#3248#0" expanded="true" />
+            <element signature="e#3290#3291#0" expanded="true" />
+            <element signature="e#3350#3351#0" expanded="true" />
+            <element signature="e#3406#3407#0" expanded="true" />
+            <element signature="e#3445#3446#0" expanded="true" />
+            <element signature="e#3484#3485#0" expanded="true" />
+            <element signature="e#3536#3537#0" expanded="true" />
+            <element signature="e#3584#3585#0" expanded="true" />
+            <element signature="e#3622#3623#0" expanded="true" />
+            <element signature="e#3660#3661#0" expanded="true" />
+            <element signature="e#3710#3711#0" expanded="true" />
+            <element signature="e#3756#3757#0" expanded="true" />
+            <element signature="e#3790#3791#0" expanded="true" />
+            <element signature="e#3824#3825#0" expanded="true" />
+            <element signature="e#3866#3867#0" expanded="true" />
+            <element signature="e#3904#3905#0" expanded="true" />
+            <element signature="e#5006#5007#0" expanded="true" />
+            <element signature="e#5043#5044#0" expanded="true" />
+            <element signature="e#5088#5089#0" expanded="true" />
+            <element signature="e#5132#5133#0" expanded="true" />
+            <element signature="e#5171#5172#0" expanded="true" />
+            <element signature="e#5210#5211#0" expanded="true" />
+            <element signature="e#5262#5263#0" expanded="true" />
+            <element signature="e#5310#5311#0" expanded="true" />
+            <element signature="e#5351#5352#0" expanded="true" />
+            <element signature="e#5392#5393#0" expanded="true" />
+            <element signature="e#5448#5449#0" expanded="true" />
+            <element signature="e#5500#5501#0" expanded="true" />
+            <element signature="e#5531#5532#0" expanded="true" />
+            <element signature="e#5564#5565#0" expanded="true" />
+            <element signature="e#5602#5603#0" expanded="true" />
+            <element signature="e#5638#5639#0" expanded="true" />
+            <element signature="e#5674#5675#0" expanded="true" />
+            <element signature="e#5710#5711#0" expanded="true" />
+            <element signature="e#5756#5757#0" expanded="true" />
+            <element signature="e#5798#5799#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/mapper/AdImage.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="47" lean-forward="true" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
+          <folding>
+            <marker date="1500428309000" expanded="true" signature="480:519" ph="SELECT id, n... adimage" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/common/http/HttpsMaster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="100" column="68" lean-forward="false" selection-start-line="100" selection-start-column="68" selection-end-line="100" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/wiatec/boblive/voucher/VoucherMasterTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="14" column="43" lean-forward="false" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/pojo/voucher/VoucherOrderInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/orm/mapper/VoucherOrder.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="40" column="36" lean-forward="true" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+          <folding>
+            <marker date="1512616238221" expanded="true" signature="1293:1548" ph="SELECT id, m... voucher_order" />
+            <marker date="1512616238221" expanded="true" signature="1768:2244" ph="INSERT INTO voucher_order... " />
+            <marker date="1512616238221" expanded="true" signature="2332:2409" ph="UPDATE vouch... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/voucher/VoucherUserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="60" column="20" lean-forward="true" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/voucher/VoucherMaster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="20" column="50" lean-forward="false" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/5da05ffe/ecdfae69-242f-4d10-8367-734bbd6aa22c/boblive.voucher_user_category">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/5da05ffe/ecdfae69-242f-4d10-8367-734bbd6aa22c/boblive.voucher_order">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/5da05ffe/ecdfae69-242f-4d10-8367-734bbd6aa22c/boblive.voucher_user">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
