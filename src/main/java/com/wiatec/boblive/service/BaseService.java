@@ -28,9 +28,8 @@ public class BaseService<T> {
         if(!tokenAfterDecrypt.startsWith("5c:41:e7")){
             throw new XException(EnumResult.ERROR_TOKEN_INCORRECT);
         }
-        ResultInfo<T> resultInfo = new ResultInfo<>();
         if(list == null || list.size() <= 0){
-            throw new XException(EnumResult.ERROR_RESOURCE_NOT_EXIST);
+            throw new XException(EnumResult.ERROR_NO_FOUND);
         }else{
             return ResultMaster.success(list);
         }
