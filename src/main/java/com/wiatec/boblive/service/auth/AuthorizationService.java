@@ -8,6 +8,8 @@ import com.wiatec.boblive.common.utils.TokenUtil;
 import com.wiatec.boblive.listener.SessionListener;
 import com.wiatec.boblive.orm.dao.auth.AuthorizationDao;
 import com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,42 +20,48 @@ import java.util.*;
 
 /**
  * authorization service
+ * @author patrick
  */
 @Service
 public class AuthorizationService {
 
 
     private static final long TEMP_DURATION = 7*24*3600*1000;
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Resource
     private AuthorizationDao authorizationDao;
 
     /**
-     * bath create key
+     * bath create16 key
      * @param count count
      * @param group group
      */
     @Transactional
     public List<String> create(int count, String group){
-        List<String> keyList = new ArrayList<>();
-        for(int i = 0 ; i < count ; i ++){
-            String key = createKey(i);
-            keyList.add(key);
-        }
-        Map<String , Object> map = new HashMap<>();
-        map.put("keyList", keyList);
-        map.put("group", group);
         try{
+            List<String> keyList = new ArrayList<>();
+            for(int i = 0 ; i < count ; i ++){
+                String key = createKey(i);
+                keyList.add(key);
+            }
+            Map<String , Object> map = new HashMap<>();
+            map.put("keyList", keyList);
+            map.put("group", group);
             authorizationDao.insertBathKey(map);
             return keyList;
+        }catch (XException e){
+            logger.error("Exception: ", e);
+            throw new XException(e.getCode(), e.getMessage());
         }catch (Exception e){
-            throw new RuntimeException("key create failure");
+            logger.error("Exception: ", e);
+            throw new XException(EnumResult.ERROR_SERVER_EXCEPTION);
         }
     }
 
-    //create key
+    //create16 key
     private String createKey(int i){
-        return TokenUtil.create(i+"", "www.wiatec.com");
+        return TokenUtil.create16(i+"", "www.wiatec.com");
     }
 
     /**
@@ -98,8 +106,12 @@ public class AuthorizationService {
                 authorizationDao.updateActive(authorizationInfo);
             }
             return ResultMaster.success(authorizationDao.selectOneByKey(authorizationInfo));
+        }catch (XException e){
+            logger.error("Exception: ", e);
+            throw new XException(e.getCode(), e.getMessage());
         }catch (Exception e){
-            throw new XException(ResultMaster.error(1009, "activate failure"));
+            logger.error("Exception: ", e);
+            throw new XException(EnumResult.ERROR_SERVER_EXCEPTION);
         }
     }
 
@@ -109,7 +121,6 @@ public class AuthorizationService {
      * @param mac wifi mac of the device
      * @return
      */
-    @Transactional(readOnly = true)
     public ResultInfo<AuthorizationInfo> validate(HttpServletRequest request, String key, String mac){
         AuthorizationInfo authorizationInfo = new AuthorizationInfo();
         authorizationInfo.setKey(key);

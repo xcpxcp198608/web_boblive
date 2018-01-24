@@ -8,6 +8,8 @@ import com.wiatec.boblive.common.utils.TextUtil;
 import com.wiatec.boblive.orm.dao.auth.AuthDealerDao;
 import com.wiatec.boblive.orm.pojo.auth.AuthDealerInfo;
 import com.wiatec.boblive.service.BaseService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,16 +18,20 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * Created by xuchengpeng on 23/08/2017.
+ *
+ * @author xuchengpeng
+ * @date 23/08/2017
  */
 @Service
 public class AuthDealerService extends BaseService {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Resource
     private AuthDealerDao authDealerDao;
 
-    @Transactional
-    public ResultInfo<AuthDealerInfo> create(HttpServletRequest request, AuthDealerInfo authDealerInfo){
+    @Transactional(rollbackFor = Exception.class)
+    public ResultInfo create(HttpServletRequest request, AuthDealerInfo authDealerInfo){
         try {
             String leader = getCurrentUserName(request);
             authDealerInfo.setLeader(leader);
@@ -48,14 +54,17 @@ public class AuthDealerService extends BaseService {
             authDealerDao.insertOne(authDealerInfo);
             AuthDealerInfo authDealerInfo1 = authDealerDao.selectOne(authDealerInfo.getUserName());
             return ResultMaster.success(authDealerInfo1);
-        }catch (Exception e) {
-            throw new XException(EnumResult.ERROR_CREATE_FAILURE);
+        }catch (XException e){
+            logger.error("Exception: ", e);
+            throw new XException(e.getCode(), e.getMessage());
+        }catch (Exception e){
+            logger.error("Exception: ", e);
+            throw new XException(EnumResult.ERROR_SERVER_EXCEPTION);
         }
     }
 
-    @Transactional
-    public ResultInfo<AuthDealerInfo> updatePassword(HttpServletRequest request, AuthDealerInfo authDealerInfo){
-        ResultInfo<AuthDealerInfo> resultInfo = new ResultInfo<> ();
+    @Transactional(rollbackFor = Exception.class)
+    public ResultInfo updatePassword(HttpServletRequest request, AuthDealerInfo authDealerInfo){
         try {
             String leader = getCurrentUserName(request);
             authDealerInfo.setLeader(leader);
@@ -68,12 +77,15 @@ public class AuthDealerService extends BaseService {
             authDealerDao.updatePassword(authDealerInfo);
             AuthDealerInfo authDealerInfo1 = authDealerDao.selectOne(authDealerInfo.getUserName());
             return ResultMaster.success(authDealerInfo1);
-        }catch (Exception e) {
-            throw new XException(EnumResult.ERROR_UPDATE_FAILURE);
+        }catch (XException e){
+            logger.error("Exception: ", e);
+            throw new XException(e.getCode(), e.getMessage());
+        }catch (Exception e){
+            logger.error("Exception: ", e);
+            throw new XException(EnumResult.ERROR_SERVER_EXCEPTION);
         }
     }
 
-    @Transactional(readOnly = true)
     public List<AuthDealerInfo> listDealer(HttpServletRequest request, AuthDealerInfo authDealerInfo ){
         String leader = getCurrentUserName(request);
         if(leader != null && leader.startsWith("L")){

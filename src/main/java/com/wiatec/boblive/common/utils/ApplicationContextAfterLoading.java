@@ -1,5 +1,7 @@
 package com.wiatec.boblive.common.utils;
 
+import com.wiatec.boblive.voucher.VoucherMaster;
+import com.wiatec.boblive.voucher.VoucherTokenMaster;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
@@ -14,6 +16,7 @@ public class ApplicationContextAfterLoading implements ApplicationListener<Conte
     public void onApplicationEvent(ContextRefreshedEvent event) {
         if(event.getApplicationContext().getParent() == null){
             logger.debug("application loading completed");
+            VoucherTokenMaster.createToken();
         }
     }
 

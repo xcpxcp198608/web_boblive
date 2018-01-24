@@ -2,46 +2,32 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wiatec.boblive.orm.dao.voucher.VoucherOrderDao">
-    <resultMap type="com.wiatec.boblive.orm.pojo.voucher.VoucherOrderInfo" id="voucherOrderInfo">
-        <id column="id" property="id"/>
-        <result column="mac" property="mac"/>
-        <result column="voucher_id" property="voucherId"/>
-        <result column="transaction_id" property="transactionId"/>
-        <result column="price" property="price"/>
-        <result column="amount" property="amount"/>
-        <result column="currency" property="currency"/>
-        <result column="status" property="status"/>
-        <result column="owner" property="owner"/>
-        <result column="first_name" property="firstName"/>
-        <result column="surname" property="surname"/>
-        <result column="email" property="email"/>
-        <result column="gender" property="gender"/>
-        <result column="birthday" property="birthday"/>
-        <result column="country" property="country"/>
-        <result column="city" property="city"/>
-        <result column="address" property="address"/>
-        <result column="create_time" property="createTime"/>
-    </resultMap>
 
-    <sql id="select">SELECT id, mac, voucher_id, transaction_id, price, amount, currency, status,
-                         owner, first_name, surname, email, gender, birthday, country, city,
-                         address, create_time
-                     FROM voucher_order </sql>
+    <sql id="select">
+        SELECT id, mac, voucher_id, transaction_id, price, amount, currency, auth, create_time, status
+        FROM voucher_order
+    </sql>
 
-    <select id="selectAll" resultMap="voucherOrderInfo">
+    <select id="selectAll" resultType="com.wiatec.boblive.orm.pojo.voucher.VoucherOrderInfo">
         <include refid="select"/>
     </select>
 
+    <select id="selectByMacAndVoucherId" resultType="com.wiatec.boblive.orm.pojo.voucher.VoucherOrderInfo">
+        <include refid="select"/>
+        WHERE mac = #{mac}
+              AND voucher_id = #{voucherId}
+              AND status = 0
+    </select>
+
     <insert id="insertOne" parameterType="com.wiatec.boblive.orm.pojo.voucher.VoucherOrderInfo">
-        INSERT INTO voucher_order (mac, voucher_id, transaction_id, price, amount, currency, status,
-                                   owner, first_name, surname, email, gender, birthday, country, city,
-                                   address)
-        VALUES (#{mac}, #{voucherId}, #{transactionId}, #{price},  #{amount}, #{currency}, #{status},
-                #{owner}, #{firstName}, #{surname}, #{email}, #{gender}, #{birthday}, #{country},
-                #{city}, #{address})
+        INSERT IGNORE INTO voucher_order (mac, voucher_id, transaction_id, price, amount, currency, auth)
+        VALUES (#{mac}, #{voucherId}, #{transactionId}, #{price},  #{amount}, #{currency}, #{auth})
     </insert>
 
-    <update id="updateStatusToApproved" parameterType="String">
-        UPDATE voucher_order SET status='approved' WHERE transaction_id=#{_parameter}
+    <update id="updateStatusToConfirm">
+        UPDATE voucher_order
+        SET status = 1
+        WHERE mac = #{mac}
     </update>
+
 </mapper>

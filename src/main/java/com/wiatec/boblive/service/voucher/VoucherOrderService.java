@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * @author patrick
+ */
 @Service
 public class VoucherOrderService {
 
@@ -25,19 +28,6 @@ public class VoucherOrderService {
         return voucherOrderDao.selectAll();
     }
 
-    public ResultInfo verifyTransaction(String transactionId){
-        boolean b;
-        try {
-            b = VoucherMaster.verifyTransaction(transactionId);
-        } catch (Exception e) {
-            throw new XException(ResultMaster.error(1009, e.getMessage()));
-        }
-        if(b) {
-            voucherOrderDao.updateStatusToApproved(transactionId);
-            return ResultMaster.success();
-        }else{
-            throw new XException(ResultMaster.error(1009, "verify failure"));
-        }
-    }
+
 
 }

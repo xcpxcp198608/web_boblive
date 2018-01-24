@@ -5,7 +5,7 @@ public enum  EnumResult {
     SUCCESS(200, "Successfully"),
     ERROR_UNAUTH(401, "Unauthorized"),
     ERROR_NO_FOUND(404, "Resource not exists"),
-    ERROR_SERVER_EXCEPTION(500, "Server exception"),
+    ERROR_SERVER_EXCEPTION(500, "Server inner error"),
 
     ERROR_WRONG_PARAM_FORMAT(6001, "Request param format incorrect"),
     ERROR_USERNAME_EXISTS(6002, "Username already exists"),
@@ -29,7 +29,7 @@ public enum  EnumResult {
     ERROR_PASSWORD_EMPTY(6019, "password is empty"),
     ERROR_EXECUTE_FAIL(6020, "execute failure"),
 
-    ERROR_CREATE_FAILURE(6021, "create failure"),
+    ERROR_CREATE_FAILURE(6021, "create16 failure"),
     ERROR_UPDATE_FAILURE(6022, "update failure"),
 
     ;

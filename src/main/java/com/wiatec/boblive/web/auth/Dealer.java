@@ -18,7 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * Created by xuchengpeng on 24/08/2017.
+ *
+ * @author xuchengpeng
+ * @date 24/08/2017
  */
 @Controller
 @RequestMapping(value = "/dealer")
@@ -34,16 +36,16 @@ public class Dealer extends BaseController {
     private Authorization1Service authorization1Service;
 
     @RequestMapping(value = "/create")
-    public @ResponseBody
-    ResultInfo<AuthDealerInfo> create(HttpServletRequest request,
-                                      @ModelAttribute AuthDealerInfo authDealerInfo){
+    @ResponseBody
+    public ResultInfo create(HttpServletRequest request, @ModelAttribute AuthDealerInfo authDealerInfo){
         validateRequest(request);
         System.out.println(authDealerInfo);
         return authDealerService.create(request, authDealerInfo);
     }
 
     @RequestMapping(value = "/update")
-    public @ResponseBody ResultInfo<AuthDealerInfo> update(HttpServletRequest request,
+    @ResponseBody
+    public ResultInfo update(HttpServletRequest request,
                                                            @ModelAttribute AuthDealerInfo authDealerInfo){
         validateRequest(request);
         System.out.println(authDealerInfo);
@@ -107,12 +109,12 @@ public class Dealer extends BaseController {
     }
 
     /**
-     * create auth by current leader account
+     * create16 auth by current leader account
      * @param request
      * @param model
      * @param sales sales
-     * @param count create count
-     * @return show create result after create successfully
+     * @param count create16 count
+     * @return show create16 result after create16 successfully
      */
     @RequestMapping(value = "/create_auth")
     public String create(HttpServletRequest request, Model model, String sales, int count,

@@ -14,6 +14,7 @@ import java.util.Map;
 
 /**
  * channel service
+ * @author patrick
  */
 @Service
 public class ChannelService extends BaseService<ChannelInfo>{
@@ -21,7 +22,6 @@ public class ChannelService extends BaseService<ChannelInfo>{
     @Resource
     private ChannelDao channelDao;
 
-    @Transactional(readOnly = true)
     public ResultInfo selectByCountry(String language, String country, String token){
         List<ChannelInfo> channelInfoList;
         Map<String, String> map = new HashMap<>();

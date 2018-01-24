@@ -60,6 +60,9 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybatis-configuration.xml"/>
         <property name="mapperLocations" value="classpath*:com/wiatec/boblive/orm/mapper/*.xml"/>
+        <property name="typeAliasesPackage" value="com.wiatec.boblive.orm.pojo;
+                                                   com.wiatec.boblive.orm.pojo.auth;
+                                                   com.wiatec.boblive.orm.pojo.voucher"/>
     </bean>
 
     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
@@ -79,7 +82,10 @@
     <!-- 启用对事务注解的支持 -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
-    <task:annotation-driven/>
+
+    <task:executor id="executor" pool-size="5" />
+    <task:scheduler id="scheduler" pool-size="10" />
+    <task:annotation-driven executor="executor" scheduler="scheduler" />
 
     <aop:aspectj-autoproxy/>
 

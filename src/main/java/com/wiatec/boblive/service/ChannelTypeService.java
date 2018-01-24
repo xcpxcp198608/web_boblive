@@ -11,6 +11,7 @@ import java.util.List;
 
 /**
  * channel type service
+ * @author patrick
  */
 @Service
 public class ChannelTypeService extends BaseService<ChannelTypeInfo> {
@@ -18,8 +19,6 @@ public class ChannelTypeService extends BaseService<ChannelTypeInfo> {
     @Resource
     private ChannelTypeDao channelTypeDao;
 
-    // invoke channelTypeDao query all channel type information
-    @Transactional(readOnly = true)
     public ResultInfo selectByType(String type, String token){
         return setListResult(token, channelTypeDao.selectByType(type));
     }

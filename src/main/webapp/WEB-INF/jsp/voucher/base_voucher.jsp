@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="Resource/css/voucher/base.css">
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script type="application/javascript" src="Resource/js/base.js"></script>
+    <link rel="shortcut icon" href="Resource/img/favicon.ico">
     <rapid:block name="css_js"/>
 
 </head>

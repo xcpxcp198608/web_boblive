@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 
 /**
  * update service
+ * @author patrick
  */
 @Service
 public class UpgradeService {
@@ -16,11 +17,6 @@ public class UpgradeService {
     @Resource
     private UpgradeDao upgradeDao;
 
-    /**
-     * invoke updateDao query update information
-     * @return
-     */
-    @Transactional(readOnly = true)
     public UpdateInfo selectOne(){
         return upgradeDao.selectOne();
     }

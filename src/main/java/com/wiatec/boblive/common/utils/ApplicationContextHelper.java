@@ -1,5 +1,6 @@
 package com.wiatec.boblive.common.utils;
 
+import com.wiatec.boblive.voucher.VoucherTokenMaster;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;

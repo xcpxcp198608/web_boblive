@@ -18,6 +18,8 @@ public abstract class RequestMaster {
     private Parameters parameters;
     private Object mTag;
     private Map<Object ,Call> callMap = new ConcurrentHashMap<>();
+    protected boolean isJson;
+    protected String mJson;
 
     public RequestMaster() {
         parameters = new Parameters();
@@ -59,6 +61,12 @@ public abstract class RequestMaster {
         return this;
     }
 
+    public RequestMaster json(String json){
+        this.isJson = true;
+        this.mJson = json;
+        return this;
+    }
+
     protected abstract Request createRequest(Header header, Parameters parameters ,Object tag);
 
     //同步请求
@@ -68,6 +76,20 @@ public abstract class RequestMaster {
             Call call = HttpsMaster.okHttpClient.newCall(request);
             Response response = call.execute();
             return response.body().string();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+
+    //同步请求
+    public Response execute1(){
+        try {
+            Request request = createRequest(header, parameters, mTag);
+            Call call = HttpsMaster.okHttpClient.newCall(request);
+            Response response = call.execute();
+            return response;
         }catch (Exception e){
             System.out.println(e.getMessage());
         }

@@ -12,7 +12,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by patrick on 25/08/2017.
+ *
+ * @author patrick
+ * @date 25/08/2017
  */
 @Controller
 @RequestMapping(value = "/auth1")
@@ -22,8 +24,8 @@ public class Auth1 extends BaseController {
     private Authorization1Service authorization1Service;
 
     @RequestMapping(value = "/activate")
-    public @ResponseBody
-    ResultInfo activate(HttpServletRequest request,
+    @ResponseBody
+    public ResultInfo activate(HttpServletRequest request,
                         @ModelAttribute AuthorizationInfo authorizationInfo,
                         String manager){
         validateRequest(request);
@@ -31,7 +33,8 @@ public class Auth1 extends BaseController {
     }
 
     @RequestMapping(value = "/deactivate")
-    public @ResponseBody ResultInfo deactivate(HttpServletRequest request,
+    @ResponseBody
+    public ResultInfo deactivate(HttpServletRequest request,
                                              @ModelAttribute AuthorizationInfo authorizationInfo,
                                              String manager){
         System.out.println(authorizationInfo);
@@ -40,7 +43,8 @@ public class Auth1 extends BaseController {
     }
 
     @RequestMapping(value = "/update")
-    public @ResponseBody ResultInfo<AuthorizationInfo> updateLevel(HttpServletRequest request,
+    @ResponseBody
+    public ResultInfo updateLevel(HttpServletRequest request,
                                                @ModelAttribute AuthorizationInfo authorizationInfo,
                                                int days){
         System.out.println(authorizationInfo);
@@ -49,7 +53,8 @@ public class Auth1 extends BaseController {
     }
 
     @RequestMapping(value = "/updateTemporary")
-    public @ResponseBody ResultInfo<AuthorizationInfo> updateTemporary(HttpServletRequest request,
+    @ResponseBody
+    public ResultInfo updateTemporary(HttpServletRequest request,
                                                          @ModelAttribute AuthorizationInfo authorizationInfo){
         System.out.println(authorizationInfo);
         validateRequest(request);

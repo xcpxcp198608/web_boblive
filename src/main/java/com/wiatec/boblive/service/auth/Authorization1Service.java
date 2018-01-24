@@ -12,6 +12,8 @@ import com.wiatec.boblive.orm.dao.auth.AuthSalesDao;
 import com.wiatec.boblive.orm.dao.auth.AuthorizationDao;
 import com.wiatec.boblive.orm.pojo.auth.AuthorizationInfo;
 import com.wiatec.boblive.service.BaseService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,9 +27,12 @@ import java.util.*;
 
 /**
  * authorization service
+ * @author patrick
  */
 @Service
 public class Authorization1Service extends BaseService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Resource
     private AuthorizationDao authorizationDao;
@@ -41,13 +46,8 @@ public class Authorization1Service extends BaseService {
 
     /**
      * activate or deactivate
-     * @param request
-     * @param authorizationInfo
-     * @param manager
-     * @param active
-     * @return
      */
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public ResultInfo activateOrDeactivate(HttpServletRequest request,
                                            AuthorizationInfo authorizationInfo,
                                            String manager, boolean active){
@@ -76,16 +76,11 @@ public class Authorization1Service extends BaseService {
 
     /**
      * update level
-     * @param request
-     * @param authorizationInfo
-     * @param days
-     * @return
      */
-    @Transactional
-    public ResultInfo<AuthorizationInfo> updateLevel(HttpServletRequest request,
+    @Transactional(rollbackFor = Exception.class)
+    public ResultInfo updateLevel(HttpServletRequest request,
                                   AuthorizationInfo authorizationInfo,
                                   int days){
-        ResultInfo<AuthorizationInfo> resultInfo = new ResultInfo<>();
         try{
             AuthorizationInfo authorizationInfo1 = authorizationDao.selectOneById(authorizationInfo);
             long addTime = days * 86400000L;
@@ -100,19 +95,20 @@ public class Authorization1Service extends BaseService {
             authorizationInfo1.setLevel(authorizationInfo.getLevel());
             authorizationDao.updateLevel(authorizationInfo1);
             return ResultMaster.success(authorizationInfo1);
+        }catch (XException e){
+            logger.error("XException: ", e);
+            return ResultMaster.error(e.getCode(), e.getMessage());
         }catch (Exception e){
-            throw new XException(EnumResult.ERROR_UPDATE_FAILURE);
+            logger.error("Exception", e);
+            return ResultMaster.error(1001, "server inner error");
         }
     }
 
     /**
      * update temporary
-     * @param request
-     * @param authorizationInfo
-     * @return
      */
-    @Transactional
-    public ResultInfo<AuthorizationInfo> updateTemporary(HttpServletRequest request,
+    @Transactional(rollbackFor = Exception.class)
+    public ResultInfo updateTemporary(HttpServletRequest request,
                                                          @ModelAttribute AuthorizationInfo authorizationInfo){
         try{
             authorizationDao.updateTemporary(authorizationInfo);
@@ -121,18 +117,18 @@ public class Authorization1Service extends BaseService {
                 authorizationInfo1 = authorizationDao.selectOneByKey(authorizationInfo);
             }
             return ResultMaster.success(authorizationInfo1);
+        }catch (XException e){
+            logger.error("XException: ", e);
+            return ResultMaster.error(e.getCode(), e.getMessage());
         }catch (Exception e){
-            throw new XException(EnumResult.ERROR_UPDATE_FAILURE);
+            logger.error("Exception", e);
+            return ResultMaster.error(1001, "server inner error");
         }
     }
 
     /**
      * list active
-     * @param request
-     * @param authorizationInfo
-     * @return
      */
-    @Transactional(readOnly = true)
     public List<AuthorizationInfo> listActive(HttpServletRequest request, AuthorizationInfo authorizationInfo){
         String manager = getCurrentUserName(request);
         if(manager.startsWith("L")){
@@ -182,10 +178,7 @@ public class Authorization1Service extends BaseService {
 
     /**
      * list negative
-     * @param request
-     * @return
      */
-    @Transactional(readOnly = true)
     public List<AuthorizationInfo> listNegative(HttpServletRequest request, AuthorizationInfo authorizationInfo){
         String manager = getCurrentUserName(request);
         if(manager.startsWith("L")){
@@ -202,11 +195,8 @@ public class Authorization1Service extends BaseService {
 
     /**
      * crate auth
-     * @param request
-     * @param count
-     * @return
      */
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public List<String> createAuth(HttpServletRequest request, AuthorizationInfo authorizationInfo, int count){
         String manager = getCurrentUserName(request);
         if(manager.startsWith("L")){

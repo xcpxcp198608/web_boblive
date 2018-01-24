@@ -1,13 +1,16 @@
 package com.wiatec.boblive.orm.pojo.voucher;
 
+/**
+ * @author patrick
+ */
 public class VoucherUserInfo {
 
     private int id;
     private String mac;
-    private String category;
     private String voucherId;
     private int level;
-    private int month;
+    private int days;
+    private float price;
     private String activateTime;
     private String expiresTime;
     private String createTime;
@@ -28,14 +31,6 @@ public class VoucherUserInfo {
         this.mac = mac;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public String getVoucherId() {
         return voucherId;
     }
@@ -52,12 +47,20 @@ public class VoucherUserInfo {
         this.level = level;
     }
 
-    public int getMonth() {
-        return month;
+    public int getDays() {
+        return days;
     }
 
-    public void setMonth(int month) {
-        this.month = month;
+    public void setDays(int days) {
+        this.days = days;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
 
     public String getActivateTime() {
@@ -89,10 +92,10 @@ public class VoucherUserInfo {
         return "VoucherUserInfo{" +
                 "id=" + id +
                 ", mac='" + mac + '\'' +
-                ", category='" + category + '\'' +
                 ", voucherId='" + voucherId + '\'' +
                 ", level=" + level +
-                ", month=" + month +
+                ", days=" + days +
+                ", price=" + price +
                 ", activateTime='" + activateTime + '\'' +
                 ", expiresTime='" + expiresTime + '\'' +
                 ", createTime='" + createTime + '\'' +

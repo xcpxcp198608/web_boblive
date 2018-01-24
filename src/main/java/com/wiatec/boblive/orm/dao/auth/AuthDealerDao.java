@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface AuthDealerDao {
     int countOne(AuthDealerInfo authDealerInfo); //validate login
-    void insertOne(AuthDealerInfo authDealerInfo); //create dealer
+    void insertOne(AuthDealerInfo authDealerInfo); //create16 dealer
     void updatePassword(AuthDealerInfo authDealerInfo); //update password
     void deleteOne(AuthDealerInfo authDealerInfo);
     AuthDealerInfo selectOne(String userName);

@@ -38,7 +38,6 @@
                         <td>TransactionId</td>
                         <td>TransactionTime</td>
                         <td>Amount</td>
-                        <td>Status</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,14 +49,6 @@
                             <td>${voucherOrderInfo.transactionId}</td>
                             <td>${voucherOrderInfo.createTime}</td>
                             <td>${voucherOrderInfo.amount}</td>
-                            <td>
-                                <c:if test="${voucherOrderInfo.status.equals('completed')}">
-                                    <a>${voucherOrderInfo.status}</a>
-                                </c:if>
-                                <c:if test="${voucherOrderInfo.status.equals('approved')}">
-                                    <a style="color: #07ae4a">${voucherOrderInfo.status}</a>
-                                </c:if>
-                            </td>
                         </tr>
                     </c:forEach>
                 </tbody>

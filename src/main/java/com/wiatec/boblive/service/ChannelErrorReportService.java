@@ -14,7 +14,9 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * Created by xuchengpeng on 08/08/2017.
+ *
+ * @author xuchengpeng
+ * @date 08/08/2017
  */
 @Service
 public class ChannelErrorReportService {
@@ -22,12 +24,12 @@ public class ChannelErrorReportService {
     @Resource
     private ChannelErrorReportDao channelErrorReportDao;
 
-    @Transactional(readOnly = true)
+
     public List<ChannelErrorReportInfo> selectAll(){
         return channelErrorReportDao.selectAll();
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public ResultInfo insertOne(ChannelErrorReportInfo channelErrorReportInfo){
         if(TextUtil.isEmpty(channelErrorReportInfo.getUserName())){
             throw new XException(EnumResult.ERROR_USERNAME_NOT_EXISTS);

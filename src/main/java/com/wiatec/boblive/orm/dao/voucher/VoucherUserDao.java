@@ -4,6 +4,9 @@ import com.wiatec.boblive.orm.pojo.voucher.VoucherAdminInfo;
 import com.wiatec.boblive.orm.pojo.voucher.VoucherUserInfo;
 import org.springframework.stereotype.Repository;
 
+/**
+ * @author patrick
+ */
 @Repository
 public interface VoucherUserDao {
 

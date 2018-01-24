@@ -10,17 +10,15 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+/**
+ * @author patrick
+ */
 @RestController
 @RequestMapping(value = "/voucher/user")
 public class User {
 
     @Resource
     private VoucherUserService voucherUserService;
-
-    @GetMapping(value = "/category")
-    public ResultInfo<VoucherUserCategoryInfo> getCategory(){
-        return voucherUserService.listCategory();
-    }
 
     /**
      * user activate by voucher
@@ -32,6 +30,12 @@ public class User {
         return voucherUserService.activate(voucherUserInfo);
     }
 
+    /**
+     * validate user
+     * @param mac  mac
+     * @param session HttpSession
+     * @return
+     */
     @GetMapping(value = "/validate/{mac}")
     public ResultInfo validate(@PathVariable String mac, HttpSession session){
         return voucherUserService.validate(mac, session);

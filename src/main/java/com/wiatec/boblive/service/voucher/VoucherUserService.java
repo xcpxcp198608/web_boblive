@@ -7,10 +7,8 @@ import com.wiatec.boblive.common.result.XException;
 import com.wiatec.boblive.common.utils.TimeUtil;
 import com.wiatec.boblive.common.utils.TokenUtil;
 import com.wiatec.boblive.orm.dao.voucher.VoucherOrderDao;
-import com.wiatec.boblive.orm.dao.voucher.VoucherUserCategoryDao;
 import com.wiatec.boblive.orm.dao.voucher.VoucherUserDao;
 import com.wiatec.boblive.orm.pojo.voucher.VoucherOrderInfo;
-import com.wiatec.boblive.orm.pojo.voucher.VoucherUserCategoryInfo;
 import com.wiatec.boblive.orm.pojo.voucher.VoucherUserInfo;
 import com.wiatec.boblive.voucher.VoucherInfo;
 import com.wiatec.boblive.voucher.VoucherMaster;
@@ -22,78 +20,72 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+/**
+ * @author patrick
+ */
 @Service
 public class VoucherUserService {
 
     private final Logger logger = LoggerFactory.getLogger(VoucherUserService.class);
 
     @Resource
-    private VoucherUserCategoryDao voucherUserCategoryDao;
-    @Resource
     private VoucherUserDao voucherUserDao;
     @Resource
     private VoucherOrderDao voucherOrderDao;
 
-    public ResultInfo<VoucherUserCategoryInfo> listCategory(){
-        return ResultMaster.success(voucherUserCategoryDao.selectAll());
-    }
-
-    @Transactional
+    /**
+     * activate voucher user
+     * @param voucherUserInfo required: voucher id, mac, days, price
+     * @return ResultInfo
+     */
+    @Transactional(rollbackFor = Exception.class)
     public ResultInfo activate(VoucherUserInfo voucherUserInfo){
         try {
-            VoucherUserCategoryInfo voucherUserCategoryInfo = voucherUserCategoryDao
-                    .selectOneByCategory(voucherUserInfo.getCategory());
-            int month = voucherUserInfo.getMonth();
-            float price = voucherUserCategoryInfo.getPrice() * month;
-            String transactionId = TokenUtil.create(voucherUserInfo.getMac(), System.currentTimeMillis() + "");
-            VoucherInfo voucherInfo = VoucherMaster.pay(voucherUserInfo.getVoucherId(), transactionId);
-            float amount = voucherInfo.getVoucher().getAmount() / 100;
-            if(amount < price){
-                throw new XException(ResultMaster.error(1007, "voucher amount no enough"));
+            //1.
+            VoucherOrderInfo voucherOrderInfo = voucherOrderDao.selectByMacAndVoucherId(voucherUserInfo.getMac(),
+                    voucherUserInfo.getVoucherId());
+            if(voucherOrderInfo != null){
+                VoucherInfo voucherInfo = new VoucherInfo();
+                voucherInfo.setVoucher(Long.parseLong(voucherOrderInfo.getVoucherId()));
+                voucherInfo.setTransaction(voucherOrderInfo.getTransactionId());
+                voucherInfo.setAuth(voucherOrderInfo.getAuth());
+                boolean confirm = VoucherMaster.confirm(voucherInfo);
+                if (!confirm) {
+                    throw new XException(1009, "voucher pay confirm failure");
+                }
+            }else {
+                String transactionId = TokenUtil.create16(voucherUserInfo.getMac());
+                VoucherInfo voucherInfo = VoucherMaster.pay(voucherUserInfo.getVoucherId(), transactionId,
+                        voucherUserInfo.getPrice());
+                if (!VoucherOrderInfo.CURRENCY_CZK.equals(voucherInfo.getCurrency())) {
+                    throw new XException(1010, "currency no match");
+                }
+                voucherOrderDao.insertOne(VoucherOrderInfo.createForSaveOrder(voucherUserInfo, voucherInfo));
+                boolean confirm = VoucherMaster.confirm(voucherInfo);
+                if (!confirm) {
+                    throw new XException(1009, "voucher pay confirm failure");
+                }
             }
-            if(!VoucherMaster.confirm(voucherUserInfo.getVoucherId(), price)){
-                throw new XException(ResultMaster.error(1007, "voucher pay confirm failed"));
-            }
-            voucherUserInfo.setLevel(voucherUserCategoryInfo.getLevel());
-            int expires = 0;
-            if (month > voucherUserCategoryInfo.getStartMonth()) {
-                expires = month + voucherUserCategoryInfo.getBonus();
-            } else {
-                expires = month;
-            }
+            //2.
+            voucherUserInfo.setLevel(2);
             voucherUserInfo.setActivateTime(TimeUtil.getStrTime());
-            voucherUserInfo.setExpiresTime(TimeUtil.getExpiresTime(expires));
-            if(voucherUserDao.countOneByMac(voucherUserInfo) == 1) {
+            if(voucherUserDao.countOneByMac(voucherUserInfo) == 1){
+                VoucherUserInfo v1 = voucherUserDao.selectOneByMac(voucherUserInfo.getMac());
+                voucherUserInfo.setExpiresTime(TimeUtil.getExpiresTimeWithDay(v1.getExpiresTime(), voucherUserInfo.getDays()));
                 voucherUserDao.updateByMac(voucherUserInfo);
             }else{
+                voucherUserInfo.setExpiresTime(TimeUtil.getExpiresTimeWithDay(voucherUserInfo.getDays()));
                 voucherUserDao.insertOne(voucherUserInfo);
             }
-            VoucherOrderInfo voucherOrderInfo = new VoucherOrderInfo();
-            if(VoucherMaster.verifyTransaction(transactionId)){
-                voucherOrderInfo.setStatus(VoucherOrderInfo.STATUS_APPROVED);
-            }else{
-                voucherOrderInfo.setStatus(VoucherOrderInfo.STATUS_COMPLETED);
-            }
-            voucherOrderInfo.setTransactionId(transactionId);
-            voucherOrderInfo.setMac(voucherUserInfo.getMac());
-            voucherOrderInfo.setVoucherId(voucherUserInfo.getVoucherId());
-            voucherOrderInfo.setPrice(price);
-            voucherOrderInfo.setAmount(amount);
-            voucherOrderInfo.setCurrency(voucherInfo.getVoucher().getCurrency());
-            voucherOrderInfo.setOwner(voucherInfo.getVoucher().getOwner());
-            voucherOrderInfo.setFirstName(voucherInfo.getUser().getFirstname());
-            voucherOrderInfo.setSurname(voucherInfo.getUser().getSurname());
-            voucherOrderInfo.setEmail(voucherInfo.getUser().getEmail());
-            voucherOrderInfo.setGender(voucherInfo.getUser().getGender());
-            voucherOrderInfo.setBirthday(voucherInfo.getUser().getBirthday());
-            voucherOrderInfo.setCountry(voucherInfo.getUser().getCountry());
-            voucherOrderInfo.setCity(voucherInfo.getUser().getCity());
-            voucherOrderInfo.setAddress(voucherInfo.getUser().getAddress());
-            voucherOrderDao.insertOne(voucherOrderInfo);
+            //3.
+            voucherOrderDao.updateStatusToConfirm(voucherUserInfo.getMac());
             return ResultMaster.success(voucherUserInfo);
+        }catch (XException e){
+            logger.error("Exception: ", e);
+            throw new XException(e.getCode(), e.getMessage());
         }catch (Exception e){
-            logger.debug(e.getMessage());
-            throw new XException(1009, e.getMessage());
+            logger.error("Exception: ", e);
+            throw new XException(EnumResult.ERROR_SERVER_EXCEPTION);
         }
     }
 

@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * @author patrick
+ */
 @Controller
 @RequestMapping(value = "/voucher/order")
 public class Order {
@@ -27,9 +30,4 @@ public class Order {
         return "voucher/order";
     }
 
-    @GetMapping(value = "/verify/{transactionId}")
-    @ResponseBody
-    public ResultInfo verify(@PathVariable String transactionId){
-        return voucherOrderService.verifyTransaction(transactionId);
-    }
 }

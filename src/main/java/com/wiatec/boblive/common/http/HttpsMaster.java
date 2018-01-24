@@ -20,14 +20,15 @@ import org.slf4j.LoggerFactory;
 
 import javax.net.ssl.*;
 
+/**
+ * @author patrick
+ */
 public class HttpsMaster {
 
     private static SSLContext sslContext;
     public static OkHttpClient okHttpClient;
     private static Logger logger = LoggerFactory.getLogger(HttpsMaster.class);
-    private static String path = Thread.currentThread().getContextClassLoader().getResource("/").getPath();
-    private static final String KEY_STORE_FILE="cert/cert.p12";
-//    private static final String KEY_STORE_FILE="/Users/xuchengpeng/IdeaProjects/boblive/src/main/resources/cert/cert.p12";
+    private static final String KEY_STORE_FILE="/cert/cert.p12";
     private static final String KEY_STORE_PASS="123456";
 
     /*
@@ -73,14 +74,17 @@ public class HttpsMaster {
             try {
                 KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
                 kmf.init(getKeyStore(),KEY_STORE_PASS.toCharArray());
-                KeyManager[] keyManagers = kmf.getKeyManagers();TrustManager[] trustAllCerts = new TrustManager[] {
-                        new X509TrustManager() {
+                KeyManager[] keyManagers = kmf.getKeyManagers();TrustManager[] trustAllCerts =
+                        new TrustManager[] { new X509TrustManager() {
+                            @Override
                             public java.security.cert.X509Certificate[] getAcceptedIssuers() {
                                 return new X509Certificate[0];
                             }
 
+                            @Override
                             public void checkClientTrusted(X509Certificate[] certs, String authType) {  }
 
+                            @Override
                             public void checkServerTrusted(X509Certificate[] certs, String authType) {  }
 
                         }
@@ -98,7 +102,9 @@ public class HttpsMaster {
         KeyStore keyStore=null;
         try {
             keyStore = KeyStore.getInstance("PKCS12");
-            FileInputStream fis = new FileInputStream(new File(path + KEY_STORE_FILE));
+            String productPath = System.getProperty("user.dir") + KEY_STORE_FILE;
+            logger.debug(productPath);
+            FileInputStream fis = new FileInputStream(new File(productPath));
             keyStore.load(fis, KEY_STORE_PASS.toCharArray());
             fis.close();
         } catch (KeyStoreException | NoSuchAlgorithmException | CertificateException | IOException e) {
@@ -106,4 +112,10 @@ public class HttpsMaster {
         }
         return keyStore;
     }
+
+    public static void main (String [] args){
+        String s = HttpsMaster.post("https://ws.test.voucher4u.eu/v1/token/create16").execute();
+        logger.debug(s);
+    }
+
 }

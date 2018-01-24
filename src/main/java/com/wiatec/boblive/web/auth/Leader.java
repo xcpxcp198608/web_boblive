@@ -115,13 +115,13 @@ public class Leader extends BaseController {
     }
 
     /**
-     * create auth by current leader account
+     * create16 auth by current leader account
      * @param request
      * @param model
      * @param dealer dealer
      * @param sales sales
-     * @param count create count
-     * @return show create result after create successfully
+     * @param count create16 count
+     * @return show create16 result after create16 successfully
      */
     @RequestMapping(value = "/create_auth")
     public String create(HttpServletRequest request, Model model, String dealer, String sales, int count,

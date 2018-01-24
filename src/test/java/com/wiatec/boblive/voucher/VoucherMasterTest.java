@@ -6,25 +6,33 @@ import org.slf4j.LoggerFactory;
 
 public class VoucherMasterTest {
 
-    private Logger logger = LoggerFactory.getLogger(VoucherMasterTest.class);
+    private final Logger logger = LoggerFactory.getLogger(VoucherMasterTest.class);
 
+    @Test
+    public void getRefreshToken() throws Exception {
+        String refreshToken = VoucherMaster.getRefreshToken();
+        logger.debug(refreshToken);
+    }
+
+    @Test
+    public void getAccessToken() throws Exception {
+        String access = VoucherMaster.getAccessToken();
+        logger.debug(access);
+    }
 
     @Test
     public void pay() throws Exception {
-        VoucherInfo voucherInfo = VoucherMaster.pay("102692089224", "12312323451");
+        VoucherInfo voucherInfo = VoucherMaster.pay("185160964538",
+                "1231232345111123", 200);
         logger.debug(voucherInfo.toString());
     }
 
     @Test
-    public void validate() throws Exception {
-        boolean re = VoucherMaster.confirm("102616489468", 1.0f);
+    public void confirm() throws Exception {
+        boolean re = VoucherMaster.confirm(VoucherMaster.pay("175132101096",
+                "1231232345112", 200));
         logger.debug(re+"");
     }
 
-    @Test
-    public void verifyTransaction() throws Exception {
-        boolean b = VoucherMaster.verifyTransaction("fa6c7df178cad32d");
-        logger.debug(b+"");
-    }
 
 }

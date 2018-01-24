@@ -9,6 +9,8 @@ import com.wiatec.boblive.orm.dao.auth.AuthDealerDao;
 import com.wiatec.boblive.orm.dao.auth.AuthSalesDao;
 import com.wiatec.boblive.orm.pojo.auth.AuthSalesInfo;
 import com.wiatec.boblive.service.BaseService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,10 +19,14 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * Created by xuchengpeng on 23/08/2017.
+ *
+ * @author xuchengpeng
+ * @date 23/08/2017
  */
 @Service
 public class AuthSalesService extends BaseService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Resource
     private AuthSalesDao authSalesDao;
@@ -28,23 +34,27 @@ public class AuthSalesService extends BaseService {
     @Resource
     private AuthDealerDao authDealerDao;
 
-    @Transactional(readOnly = true)
     public List<AuthSalesInfo> listAll(HttpServletRequest request, AuthSalesInfo authSalesInfo){
         try {
             String manager = getCurrentUserName(request);
-            if(manager.startsWith("L")){
+            if (manager.startsWith("L")) {
                 authSalesInfo.setLeader(manager);
             }
-            if(manager.startsWith("D")){
+            if (manager.startsWith("D")) {
                 authSalesInfo.setDealer(manager);
                 authSalesInfo.setLeader(authDealerDao.getLeader(manager));
             }
+            return authSalesDao.select(authSalesInfo);
+        }catch (XException e){
+            logger.error("Exception: ", e);
+            throw new XException(e.getCode(), e.getMessage());
         }catch (Exception e){
-            return null;
+            logger.error("Exception: ", e);
+            throw new XException(EnumResult.ERROR_SERVER_EXCEPTION);
         }
-        return authSalesDao.select(authSalesInfo);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public ResultInfo<AuthSalesInfo> create(HttpServletRequest request, AuthSalesInfo authSalesInfo){
         authSalesInfo = setAuthSalesInfo(request, authSalesInfo);
         try{
@@ -76,13 +86,17 @@ public class AuthSalesService extends BaseService {
             }
             authSalesDao.insertOne(authSalesInfo);
             return ResultMaster.success(authSalesDao.selectOne(authSalesInfo.getUserName()));
+        }catch (XException e){
+            logger.error("Exception: ", e);
+            throw new XException(e.getCode(), e.getMessage());
         }catch (Exception e){
-            throw new XException(ResultMaster.error(1009, "create failure"));
+            logger.error("Exception: ", e);
+            throw new XException(EnumResult.ERROR_SERVER_EXCEPTION);
         }
     }
 
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public ResultInfo<AuthSalesInfo> updatePassword(HttpServletRequest request, AuthSalesInfo authSalesInfo){
         try{
             if(TextUtil.isEmpty(authSalesInfo.getUserName())){
@@ -93,8 +107,12 @@ public class AuthSalesService extends BaseService {
             }
             authSalesDao.updatePassword(authSalesInfo);
             return ResultMaster.success();
+        }catch (XException e){
+            logger.error("Exception: ", e);
+            throw new XException(e.getCode(), e.getMessage());
         }catch (Exception e){
-            throw new XException(ResultMaster.error(1009, "update failure"));
+            logger.error("Exception: ", e);
+            throw new XException(EnumResult.ERROR_SERVER_EXCEPTION);
         }
     }
 

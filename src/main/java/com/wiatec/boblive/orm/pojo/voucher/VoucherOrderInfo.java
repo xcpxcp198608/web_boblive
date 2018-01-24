@@ -1,9 +1,18 @@
 package com.wiatec.boblive.orm.pojo.voucher;
 
+import com.wiatec.boblive.voucher.VoucherInfo;
+
+import java.util.Date;
+
+/**
+ * @author patrick
+ */
 public class VoucherOrderInfo {
 
-    public static final String STATUS_COMPLETED = "completed";
-    public static final String STATUS_APPROVED = "approved";
+    public static final int STATUS_CONSUME = 0;
+    public static final int STATUS_CONFIRM = 1;
+    public static final int STATUS_ERROR = -1;
+    public static final String CURRENCY_CZK = "CZK";
 
     private int id;
     private String transactionId;
@@ -12,26 +21,9 @@ public class VoucherOrderInfo {
     private float amount;
     private float price;
     private String currency;
-    private String status;
-
-    private String owner;
-    private String firstName;
-    private String surname;
-    private String email;
-    private String gender;
-    private String birthday;
-    private String country;
-    private String city;
-    private String address;
-    private String createTime;
-
-    public static String getStatusCompleted() {
-        return STATUS_COMPLETED;
-    }
-
-    public static String getStatusApproved() {
-        return STATUS_APPROVED;
-    }
+    private String auth;
+    private int status;
+    private Date createTime;
 
     public int getId() {
         return id;
@@ -89,91 +81,27 @@ public class VoucherOrderInfo {
         this.currency = currency;
     }
 
-    public String getStatus() {
+    public String getAuth() {
+        return auth;
+    }
+
+    public void setAuth(String auth) {
+        this.auth = auth;
+    }
+
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
@@ -187,17 +115,24 @@ public class VoucherOrderInfo {
                 ", amount=" + amount +
                 ", price=" + price +
                 ", currency='" + currency + '\'' +
-                ", status='" + status + '\'' +
-                ", owner='" + owner + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                ", gender='" + gender + '\'' +
-                ", birthday='" + birthday + '\'' +
-                ", country='" + country + '\'' +
-                ", city='" + city + '\'' +
-                ", address='" + address + '\'' +
-                ", createTime='" + createTime + '\'' +
+                ", auth='" + auth + '\'' +
+                ", status=" + status +
+                ", createTime=" + createTime +
                 '}';
     }
+
+    public static VoucherOrderInfo createForSaveOrder(VoucherUserInfo voucherUserInfo, VoucherInfo voucherInfo){
+        VoucherOrderInfo voucherOrderInfo = new VoucherOrderInfo();
+        voucherOrderInfo.setMac(voucherUserInfo.getMac());
+        voucherOrderInfo.setPrice(voucherUserInfo.getPrice());
+
+        voucherOrderInfo.setVoucherId(voucherInfo.getVoucher()+"");
+        voucherOrderInfo.setTransactionId(voucherInfo.getTransaction());
+        voucherOrderInfo.setAmount(voucherInfo.getAmount());
+        voucherOrderInfo.setCurrency(voucherInfo.getCurrency());
+        voucherOrderInfo.setAuth(voucherInfo.getAuth());
+        voucherOrderInfo.setStatus(STATUS_CONSUME);
+        return voucherOrderInfo;
+    }
+
 }

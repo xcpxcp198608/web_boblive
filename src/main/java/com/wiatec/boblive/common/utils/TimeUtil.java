@@ -79,4 +79,32 @@ public class TimeUtil {
         return System.currentTimeMillis() > TimeUtil.getUnixFromStr(expiresTime);
     }
 
+    public static String getRemainTime(String expiresTime){
+        Date date = new Date(getStrTime());
+        Calendar calendar = Calendar.getInstance();
+        return "";
+    }
+
+    public static String getExpiresTimeWithDay(int days){
+        return getExpiresTimeWithDay(getStrTime(), days);
+    }
+
+    public static String getExpiresTimeWithDay(String activateTime, int days){
+        Date date = new Date(TimeUtil.getUnixFromStr(activateTime));
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DAY_OF_MONTH, days);
+        date = calendar.getTime();
+        return getStrTime(date.getTime());
+    }
+
+    public static String getExpiresDateWithDay(String activateTime, int days){
+        Date date = new Date(TimeUtil.getUnixFromStr(activateTime));
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DAY_OF_MONTH, days);
+        date = calendar.getTime();
+        return getStrDate(date.getTime());
+    }
+
 }

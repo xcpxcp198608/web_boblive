@@ -31,12 +31,17 @@ public class PostRequest extends RequestMaster {
                     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36");
         }
         if(parameters != null){
-            MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded; charset=utf-8");
-            StringBuilder stringBuilder = new StringBuilder();
-            for (Map.Entry<String ,String > entry : parameters.stringMap.entrySet()){
-                stringBuilder.append(entry.getKey()).append("=").append(entry.getValue()).append("&");
+            RequestBody requestBody;
+            if(isJson){
+                requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), mJson);
+            }else {
+                MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded; charset=utf-8");
+                StringBuilder stringBuilder = new StringBuilder();
+                for (Map.Entry<String, String> entry : parameters.stringMap.entrySet()) {
+                    stringBuilder.append(entry.getKey()).append("=").append(entry.getValue()).append("&");
+                }
+                requestBody = RequestBody.create(mediaType, stringBuilder.toString());
             }
-            RequestBody requestBody = RequestBody.create(mediaType, stringBuilder.toString());
             builder.post(requestBody);
         }
         if(tag != null){
