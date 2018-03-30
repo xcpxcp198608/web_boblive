@@ -5,6 +5,7 @@ import com.wiatec.boblive.common.result.ResultInfo;
 import com.wiatec.boblive.common.result.ResultMaster;
 import com.wiatec.boblive.common.result.XException;
 import com.wiatec.boblive.common.utils.AESUtil;
+import com.wiatec.boblive.common.utils.TextUtil;
 import com.wiatec.boblive.listener.SessionListener;
 
 import javax.servlet.http.Cookie;
@@ -35,48 +36,12 @@ public class BaseService<T> {
         }
     }
 
-    private String getSessionIdFromRequest(HttpServletRequest request){
-        Cookie[] cookies = request.getCookies();
-        String sessionId = cookies[0].getValue();
-        System.out.println(sessionId);
-        return sessionId;
-    }
-
-    private HttpSession getSession(HttpServletRequest request, String sessionId){
-        HttpSession session = SessionListener.getUserSession(sessionId);
-        if(session == null){
-            session = request.getSession();
+    protected String getCurrentAdminName(HttpServletRequest request){
+        String username = (String) request.getSession().getAttribute(SessionListener.KEY_USER_NAME);
+        if(TextUtil.isEmpty(username)){
+            throw new XException(EnumResult.ERROR_UNAUTH);
         }
-        return session;
-    }
-
-    private void setUserNameInSession(HttpSession session, String userName){
-        session.setAttribute("userName", userName);
-    }
-
-    private String getUserNameFormSession(HttpSession session){
-        return session.getAttribute("userName").toString();
-    }
-
-    private String getRealSessionId(HttpServletRequest request){
-        return getSession(request, getSessionIdFromRequest(request)).getId();
-    }
-
-    protected void setUserName(HttpServletRequest request, String userName){
-        String sessionId= getSessionIdFromRequest(request);
-        HttpSession session = getSession(request, sessionId);
-        setUserNameInSession(session, userName);
-    }
-
-    protected void setCookie(HttpServletRequest request, HttpServletResponse response){
-        String sessionId = getRealSessionId(request);
-        response.addCookie(new Cookie("JSESSIONID",sessionId));
-    }
-
-    protected String getCurrentUserName(HttpServletRequest request){
-        String sessionId= getSessionIdFromRequest(request);
-        HttpSession session = getSession(request, sessionId);
-        return getUserNameFormSession(session);
+        return username;
     }
 
 }

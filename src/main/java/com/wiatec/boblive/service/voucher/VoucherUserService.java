@@ -40,53 +40,45 @@ public class VoucherUserService {
      */
     @Transactional(rollbackFor = Exception.class)
     public ResultInfo activate(VoucherUserInfo voucherUserInfo){
-        try {
-            //1.
-            VoucherOrderInfo voucherOrderInfo = voucherOrderDao.selectByMacAndVoucherId(voucherUserInfo.getMac(),
-                    voucherUserInfo.getVoucherId());
-            if(voucherOrderInfo != null){
-                VoucherInfo voucherInfo = new VoucherInfo();
-                voucherInfo.setVoucher(Long.parseLong(voucherOrderInfo.getVoucherId()));
-                voucherInfo.setTransaction(voucherOrderInfo.getTransactionId());
-                voucherInfo.setAuth(voucherOrderInfo.getAuth());
-                boolean confirm = VoucherMaster.confirm(voucherInfo);
-                if (!confirm) {
-                    throw new XException(1009, "voucher pay confirm failure");
-                }
-            }else {
-                String transactionId = TokenUtil.create16(voucherUserInfo.getMac());
-                VoucherInfo voucherInfo = VoucherMaster.pay(voucherUserInfo.getVoucherId(), transactionId,
-                        voucherUserInfo.getPrice());
-                if (!VoucherOrderInfo.CURRENCY_CZK.equals(voucherInfo.getCurrency())) {
-                    throw new XException(1010, "currency no match");
-                }
-                voucherOrderDao.insertOne(VoucherOrderInfo.createForSaveOrder(voucherUserInfo, voucherInfo));
-                boolean confirm = VoucherMaster.confirm(voucherInfo);
-                if (!confirm) {
-                    throw new XException(1009, "voucher pay confirm failure");
-                }
+        //1.
+        VoucherOrderInfo voucherOrderInfo = voucherOrderDao.selectByMacAndVoucherId(voucherUserInfo.getMac(),
+                voucherUserInfo.getVoucherId());
+        if(voucherOrderInfo != null){
+            VoucherInfo voucherInfo = new VoucherInfo();
+            voucherInfo.setVoucher(Long.parseLong(voucherOrderInfo.getVoucherId()));
+            voucherInfo.setTransaction(voucherOrderInfo.getTransactionId());
+            voucherInfo.setAuth(voucherOrderInfo.getAuth());
+            boolean confirm = VoucherMaster.confirm(voucherInfo);
+            if (!confirm) {
+                throw new XException(1009, "voucher pay confirm failure");
             }
-            //2.
-            voucherUserInfo.setLevel(2);
-            voucherUserInfo.setActivateTime(TimeUtil.getStrTime());
-            if(voucherUserDao.countOneByMac(voucherUserInfo) == 1){
-                VoucherUserInfo v1 = voucherUserDao.selectOneByMac(voucherUserInfo.getMac());
-                voucherUserInfo.setExpiresTime(TimeUtil.getExpiresTimeWithDay(v1.getExpiresTime(), voucherUserInfo.getDays()));
-                voucherUserDao.updateByMac(voucherUserInfo);
-            }else{
-                voucherUserInfo.setExpiresTime(TimeUtil.getExpiresTimeWithDay(voucherUserInfo.getDays()));
-                voucherUserDao.insertOne(voucherUserInfo);
+        }else {
+            String transactionId = TokenUtil.create16(voucherUserInfo.getMac());
+            VoucherInfo voucherInfo = VoucherMaster.pay(voucherUserInfo.getVoucherId(), transactionId,
+                    voucherUserInfo.getPrice());
+            if (!VoucherOrderInfo.CURRENCY_CZK.equals(voucherInfo.getCurrency())) {
+                throw new XException(1010, "currency no match");
             }
-            //3.
-            voucherOrderDao.updateStatusToConfirm(voucherUserInfo.getMac());
-            return ResultMaster.success(voucherUserInfo);
-        }catch (XException e){
-            logger.error("Exception: ", e);
-            throw new XException(e.getCode(), e.getMessage());
-        }catch (Exception e){
-            logger.error("Exception: ", e);
-            throw new XException(EnumResult.ERROR_SERVER_EXCEPTION);
+            voucherOrderDao.insertOne(VoucherOrderInfo.createForSaveOrder(voucherUserInfo, voucherInfo));
+            boolean confirm = VoucherMaster.confirm(voucherInfo);
+            if (!confirm) {
+                throw new XException(1009, "voucher pay confirm failure");
+            }
         }
+        //2.
+        voucherUserInfo.setLevel(2);
+        voucherUserInfo.setActivateTime(TimeUtil.getStrTime());
+        if(voucherUserDao.countOneByMac(voucherUserInfo) == 1){
+            VoucherUserInfo v1 = voucherUserDao.selectOneByMac(voucherUserInfo.getMac());
+            voucherUserInfo.setExpiresTime(TimeUtil.getExpiresTimeWithDay(v1.getExpiresTime(), voucherUserInfo.getDays()));
+            voucherUserDao.updateByMac(voucherUserInfo);
+        }else{
+            voucherUserInfo.setExpiresTime(TimeUtil.getExpiresTimeWithDay(voucherUserInfo.getDays()));
+            voucherUserDao.insertOne(voucherUserInfo);
+        }
+        //3.
+        voucherOrderDao.updateStatusToConfirm(voucherUserInfo.getMac());
+        return ResultMaster.success(voucherUserInfo);
     }
 
     public ResultInfo validate(String mac, HttpSession session){

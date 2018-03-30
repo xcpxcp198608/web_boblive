@@ -33,7 +33,7 @@ public class AuthDealerService extends BaseService {
     @Transactional(rollbackFor = Exception.class)
     public ResultInfo create(HttpServletRequest request, AuthDealerInfo authDealerInfo){
         try {
-            String leader = getCurrentUserName(request);
+            String leader = getCurrentAdminName(request);
             authDealerInfo.setLeader(leader);
             if(TextUtil.isEmpty(authDealerInfo.getUserName())){
                 throw new XException(EnumResult.ERROR_USERNAME_EMPTY);
@@ -66,7 +66,7 @@ public class AuthDealerService extends BaseService {
     @Transactional(rollbackFor = Exception.class)
     public ResultInfo updatePassword(HttpServletRequest request, AuthDealerInfo authDealerInfo){
         try {
-            String leader = getCurrentUserName(request);
+            String leader = getCurrentAdminName(request);
             authDealerInfo.setLeader(leader);
             if(TextUtil.isEmpty(authDealerInfo.getUserName())){
                 throw new XException(EnumResult.ERROR_USERNAME_EMPTY);
@@ -87,7 +87,7 @@ public class AuthDealerService extends BaseService {
     }
 
     public List<AuthDealerInfo> listDealer(HttpServletRequest request, AuthDealerInfo authDealerInfo ){
-        String leader = getCurrentUserName(request);
+        String leader = getCurrentAdminName(request);
         if(leader != null && leader.startsWith("L")){
             authDealerInfo.setLeader(leader);
         }

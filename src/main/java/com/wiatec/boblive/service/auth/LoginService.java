@@ -1,6 +1,7 @@
 package com.wiatec.boblive.service.auth;
 
 import com.wiatec.boblive.common.utils.TextUtil;
+import com.wiatec.boblive.listener.SessionListener;
 import com.wiatec.boblive.orm.dao.auth.AuthDealerDao;
 import com.wiatec.boblive.orm.dao.auth.AuthLeaderDao;
 import com.wiatec.boblive.orm.dao.auth.AuthSalesDao;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by xuchengpeng on 23/08/2017.
@@ -39,25 +41,21 @@ public class LoginService extends BaseService {
         if(TextUtil.isEmpty(password)){
             throw new RuntimeException("password empty");
         }
+        HttpSession session = request.getSession();
+        session.setAttribute(SessionListener.KEY_USER_NAME, userName);
         if(userName.startsWith("L")){
             boolean flag = authLeaderDao.countOne(new AuthLeaderInfo(userName, password)) == 1;
             if(flag){
-                setCookie(request, response);
-                setUserName(request, userName);
                 return "redirect:/leader/dealer";
             }
         }else if(userName.startsWith("D")){
             boolean flag = authDealerDao.countOne(new AuthDealerInfo(userName, password)) == 1;
             if(flag){
-                setCookie(request, response);
-                setUserName(request, userName);
                 return "redirect:/dealer/sales";
             }
         }else if(userName.startsWith("S")){
             boolean flag = authSalesDao.countOne(new AuthSalesInfo(userName, password)) == 1;
             if(flag){
-                setCookie(request, response);
-                setUserName(request, userName);
                 return "redirect:/sales/active";
             }
         }else{

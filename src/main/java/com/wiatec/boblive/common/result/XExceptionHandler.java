@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * @author patrick
+ */
 @ControllerAdvice
 public class XExceptionHandler {
 
@@ -18,8 +21,8 @@ public class XExceptionHandler {
             XException xException = (XException) e;
             return ResultMaster.error(xException.getCode(), xException.getMessage());
         }else {
-            logger.debug("= [system exception]= {}", e.getMessage());
-            return ResultMaster.error(1001, e.getMessage());
+            logger.error("= [system exception]: ",e);
+            return ResultMaster.error(500, "system inner error");
         }
     }
 }

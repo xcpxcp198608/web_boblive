@@ -36,7 +36,7 @@ public class AuthSalesService extends BaseService {
 
     public List<AuthSalesInfo> listAll(HttpServletRequest request, AuthSalesInfo authSalesInfo){
         try {
-            String manager = getCurrentUserName(request);
+            String manager = getCurrentAdminName(request);
             if (manager.startsWith("L")) {
                 authSalesInfo.setLeader(manager);
             }
@@ -74,7 +74,7 @@ public class AuthSalesService extends BaseService {
             if(authSalesDao.countUserName(authSalesInfo.getUserName()) == 1){
                 throw new XException(EnumResult.ERROR_USERNAME_EXISTS);
             }
-            String manager = getCurrentUserName(request);
+            String manager = getCurrentAdminName(request);
             if(!TextUtil.isEmpty(manager)) {
                 if (manager.startsWith("D")) {
                     authSalesInfo.setDealer(manager);
@@ -117,7 +117,7 @@ public class AuthSalesService extends BaseService {
     }
 
     private AuthSalesInfo setAuthSalesInfo(HttpServletRequest request, AuthSalesInfo authSalesInfo){
-        String manager = getCurrentUserName(request);
+        String manager = getCurrentAdminName(request);
         if(manager.startsWith("L")){
             authSalesInfo.setLeader(manager);
         }else if(manager.startsWith("D")){

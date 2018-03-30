@@ -109,7 +109,7 @@ public class Leader extends BaseController {
         validateRequest(request);
         List<AuthDealerInfo> authDealerInfoList =  authDealerService.listDealer(request, authDealerInfo);
         model.addAttribute("authDealerInfoList", authDealerInfoList);
-        List<AuthSalesInfo> authSalesInfoList = authSalesService.listAll(request, null);
+        List<AuthSalesInfo> authSalesInfoList = authSalesService.listAll(request, new AuthSalesInfo());
         model.addAttribute("authSalesInfoList", authSalesInfoList);
         return "manager/leader/auth_create";
     }
@@ -129,7 +129,7 @@ public class Leader extends BaseController {
         validateRequest(request);
         List<String> keyList = authorization1Service.createAuth(request, authorizationInfo, count);
         List<AuthDealerInfo> authDealerInfoList =  authDealerService.listDealer(request, new AuthDealerInfo());
-        List<AuthSalesInfo> authSalesInfoList = authSalesService.listAll(request, null);
+        List<AuthSalesInfo> authSalesInfoList = authSalesService.listAll(request, new AuthSalesInfo());
         model.addAttribute("keyList", keyList);
         model.addAttribute("authDealerInfoList", authDealerInfoList);
         model.addAttribute("authSalesInfoList", authSalesInfoList);

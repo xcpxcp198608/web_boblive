@@ -114,7 +114,7 @@ public class HttpsMaster {
     }
 
     public static void main (String [] args){
-        String s = HttpsMaster.post("https://ws.test.voucher4u.eu/v1/token/create16").execute();
+        String s = HttpsMaster.post("https://ws.voucher4u.eu/v1/token/create").execute();
         logger.debug(s);
     }
 

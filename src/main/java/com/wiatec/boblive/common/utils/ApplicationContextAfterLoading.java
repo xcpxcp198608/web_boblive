@@ -8,6 +8,9 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 
 
+/**
+ * @author patrick
+ */
 public class ApplicationContextAfterLoading implements ApplicationListener<ContextRefreshedEvent> {
 
     private Logger logger = LoggerFactory.getLogger(ApplicationContextAfterLoading.class);
@@ -16,7 +19,11 @@ public class ApplicationContextAfterLoading implements ApplicationListener<Conte
     public void onApplicationEvent(ContextRefreshedEvent event) {
         if(event.getApplicationContext().getParent() == null){
             logger.debug("application loading completed");
-            VoucherTokenMaster.createToken();
+            try {
+                VoucherTokenMaster.accessToken();
+            } catch (Exception e) {
+                logger.error("token exception", e);
+            }
         }
     }
 

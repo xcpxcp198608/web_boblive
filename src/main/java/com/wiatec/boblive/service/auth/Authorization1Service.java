@@ -52,11 +52,11 @@ public class Authorization1Service extends BaseService {
                                            AuthorizationInfo authorizationInfo,
                                            String manager, boolean active){
         if("leader".equals(manager)){
-            authorizationInfo.setLeader(getCurrentUserName(request));
+            authorizationInfo.setLeader(getCurrentAdminName(request));
         }else if("dealer".equals(manager)){
-            authorizationInfo.setDealer(getCurrentUserName(request));
+            authorizationInfo.setDealer(getCurrentAdminName(request));
         }else if("sales".equals(manager)){
-            authorizationInfo.setSales(getCurrentUserName(request));
+            authorizationInfo.setSales(getCurrentAdminName(request));
         }
         try {
             if(active) {
@@ -130,7 +130,7 @@ public class Authorization1Service extends BaseService {
      * list active
      */
     public List<AuthorizationInfo> listActive(HttpServletRequest request, AuthorizationInfo authorizationInfo){
-        String manager = getCurrentUserName(request);
+        String manager = getCurrentAdminName(request);
         if(manager.startsWith("L")){
             authorizationInfo.setLeader(manager);
         }
@@ -180,7 +180,7 @@ public class Authorization1Service extends BaseService {
      * list negative
      */
     public List<AuthorizationInfo> listNegative(HttpServletRequest request, AuthorizationInfo authorizationInfo){
-        String manager = getCurrentUserName(request);
+        String manager = getCurrentAdminName(request);
         if(manager.startsWith("L")){
             authorizationInfo.setLeader(manager);
         }
@@ -198,7 +198,7 @@ public class Authorization1Service extends BaseService {
      */
     @Transactional(rollbackFor = Exception.class)
     public List<String> createAuth(HttpServletRequest request, AuthorizationInfo authorizationInfo, int count){
-        String manager = getCurrentUserName(request);
+        String manager = getCurrentAdminName(request);
         if(manager.startsWith("L")){
             authorizationInfo.setLeader(manager);
         }
