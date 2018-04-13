@@ -7,17 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f758629f-63b6-49c7-9950-6deb20eda91c" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/Constant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/common/result/EnumResultCZ.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/api/auth/Authorization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/api/auth/Authorization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/api/voucher/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/api/voucher/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/common/result/EnumResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/common/result/EnumResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/common/result/ResultMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/common/result/ResultMaster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/common/result/XException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/common/result/XException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/auth/AuthorizationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/auth/AuthorizationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/voucher/VoucherUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/voucher/VoucherUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/dispatcher-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dispatcher-servlet.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -54,7 +45,29 @@
     </projectState>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/api/voucher/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="366">
+              <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VoucherUserService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/voucher/VoucherUserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="326">
+              <caret line="83" column="12" selection-start-line="83" selection-start-column="12" selection-end-line="83" selection-end-column="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -519,6 +532,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
@@ -662,7 +676,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1011,7 +1024,8 @@
       <workItem from="1522316616776" duration="161000" />
       <workItem from="1522372541153" duration="1378000" />
       <workItem from="1522805138595" duration="280000" />
-      <workItem from="1523597850475" duration="3730000" />
+      <workItem from="1523597850475" duration="3810000" />
+      <workItem from="1523602213569" duration="243000" />
     </task>
     <task id="LOCAL-00001" summary="201712051520">
       <created>1512458532736</created>
@@ -1069,7 +1083,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522373882126</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="201804131440">
+      <created>1523601754172</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1523601754172</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1105,10 +1126,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124557000" />
+    <option name="totallyTimeSpent" value="124880000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="878" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5028818" side_tool="true" weight="0.36697248" />
@@ -1127,16 +1149,15 @@
       <window_info id="UI Designer" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.36173" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.49711815" weight="0.32756326" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="9" show_stripe_button="false" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="16" sideWeight="0.49711815" visible="true" weight="0.36884156" />
+      <window_info anchor="bottom" id="Run" order="16" sideWeight="0.49711815" weight="0.36884156" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Spring" order="11" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.32896462" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18175288" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18462643" />
       <window_info anchor="right" id="Bean Validation" order="3" show_stripe_button="false" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="right" id="Gradle" order="3" />
@@ -1147,6 +1168,7 @@
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.32896462" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32896462" />
+      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.49711815" weight="0.32756326" />
       <window_info anchor="bottom" id="Build" order="14" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="1" />
@@ -1167,7 +1189,8 @@
     <MESSAGE value="201712071155" />
     <MESSAGE value="201801241045" />
     <MESSAGE value="201803300935" />
-    <option name="LAST_COMMIT_MESSAGE" value="201803300935" />
+    <MESSAGE value="201804131440" />
+    <option name="LAST_COMMIT_MESSAGE" value="201804131440" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1438,9 +1461,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/language_en_US.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="429">
@@ -1515,27 +1535,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/voucher/VoucherUserService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/voucher/VoucherMaster.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="93" column="22" selection-start-line="93" selection-start-column="22" selection-end-line="93" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="819">
+          <caret line="73" column="50" lean-forward="true" selection-start-line="73" selection-start-column="50" selection-end-line="73" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/api/voucher/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="41" column="37" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
+        <state relative-caret-position="366">
+          <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/voucher/VoucherMaster.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wiatec/boblive/service/voucher/VoucherUserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="73" column="50" lean-forward="true" selection-start-line="73" selection-start-column="50" selection-end-line="73" selection-end-column="50" />
+        <state relative-caret-position="326">
+          <caret line="83" column="12" selection-start-line="83" selection-start-column="12" selection-end-line="83" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -76,7 +76,11 @@ public class VoucherUserService {
         voucherUserInfo.setActivateTime(TimeUtil.getStrTime());
         if(voucherUserDao.countOneByMac(voucherUserInfo) == 1){
             VoucherUserInfo v1 = voucherUserDao.selectOneByMac(voucherUserInfo.getMac());
-            voucherUserInfo.setExpiresTime(TimeUtil.getExpiresTimeWithDay(v1.getExpiresTime(), voucherUserInfo.getDays()));
+            if(TimeUtil.isOutExpires(v1.getExpiresTime())){
+                voucherUserInfo.setExpiresTime(TimeUtil.getExpiresTimeWithDay(voucherUserInfo.getDays()));
+            }else {
+                voucherUserInfo.setExpiresTime(TimeUtil.getExpiresTimeWithDay(v1.getExpiresTime(), voucherUserInfo.getDays()));
+            }
             voucherUserDao.updateByMac(voucherUserInfo);
         }else{
             voucherUserInfo.setExpiresTime(TimeUtil.getExpiresTimeWithDay(voucherUserInfo.getDays()));
