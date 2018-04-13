@@ -9,6 +9,11 @@ public class XException extends RuntimeException {
         this.code = enumResult.getCode();
     }
 
+    public XException(EnumResultCZ enumResult) {
+        super(enumResult.getMessage());
+        this.code = enumResult.getCode();
+    }
+
     public XException(ResultInfo resultInfo) {
         super(resultInfo.getMessage());
         this.code = resultInfo.getCode();

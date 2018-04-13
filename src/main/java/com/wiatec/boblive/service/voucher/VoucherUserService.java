@@ -1,9 +1,7 @@
 package com.wiatec.boblive.service.voucher;
 
-import com.wiatec.boblive.common.result.EnumResult;
-import com.wiatec.boblive.common.result.ResultInfo;
-import com.wiatec.boblive.common.result.ResultMaster;
-import com.wiatec.boblive.common.result.XException;
+import com.wiatec.boblive.Constant;
+import com.wiatec.boblive.common.result.*;
 import com.wiatec.boblive.common.utils.TimeUtil;
 import com.wiatec.boblive.common.utils.TokenUtil;
 import com.wiatec.boblive.orm.dao.voucher.VoucherOrderDao;
@@ -12,8 +10,6 @@ import com.wiatec.boblive.orm.pojo.voucher.VoucherOrderInfo;
 import com.wiatec.boblive.orm.pojo.voucher.VoucherUserInfo;
 import com.wiatec.boblive.voucher.VoucherInfo;
 import com.wiatec.boblive.voucher.VoucherMaster;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,8 +22,6 @@ import javax.servlet.http.HttpSession;
 @Service
 public class VoucherUserService {
 
-    private final Logger logger = LoggerFactory.getLogger(VoucherUserService.class);
-
     @Resource
     private VoucherUserDao voucherUserDao;
     @Resource
@@ -39,7 +33,7 @@ public class VoucherUserService {
      * @return ResultInfo
      */
     @Transactional(rollbackFor = Exception.class)
-    public ResultInfo activate(VoucherUserInfo voucherUserInfo){
+    public ResultInfo activate(VoucherUserInfo voucherUserInfo, String lang){
         //1.
         VoucherOrderInfo voucherOrderInfo = voucherOrderDao.selectByMacAndVoucherId(voucherUserInfo.getMac(),
                 voucherUserInfo.getVoucherId());
@@ -50,19 +44,31 @@ public class VoucherUserService {
             voucherInfo.setAuth(voucherOrderInfo.getAuth());
             boolean confirm = VoucherMaster.confirm(voucherInfo);
             if (!confirm) {
-                throw new XException(1009, "voucher pay confirm failure");
+                if(Constant.LANG_CS_CZ.equals(lang)) {
+                    throw new XException(EnumResultCZ.ERROR_VALIDATE_FAILURE);
+                }else {
+                    throw new XException(1009, "voucher pay confirm failure");
+                }
             }
         }else {
             String transactionId = TokenUtil.create16(voucherUserInfo.getMac());
             VoucherInfo voucherInfo = VoucherMaster.pay(voucherUserInfo.getVoucherId(), transactionId,
                     voucherUserInfo.getPrice());
             if (!VoucherOrderInfo.CURRENCY_CZK.equals(voucherInfo.getCurrency())) {
-                throw new XException(1010, "currency no match");
+                if(Constant.LANG_CS_CZ.equals(lang)) {
+                    throw new XException(EnumResultCZ.ERROR_VALIDATE_FAILURE);
+                }else {
+                    throw new XException(1010, "currency no match");
+                }
             }
             voucherOrderDao.insertOne(VoucherOrderInfo.createForSaveOrder(voucherUserInfo, voucherInfo));
             boolean confirm = VoucherMaster.confirm(voucherInfo);
             if (!confirm) {
-                throw new XException(1009, "voucher pay confirm failure");
+                if(Constant.LANG_CS_CZ.equals(lang)) {
+                    throw new XException(EnumResultCZ.ERROR_VALIDATE_FAILURE);
+                }else {
+                    throw new XException(1009, "voucher pay confirm failure");
+                }
             }
         }
         //2.
@@ -78,10 +84,14 @@ public class VoucherUserService {
         }
         //3.
         voucherOrderDao.updateStatusToConfirm(voucherUserInfo.getMac());
-        return ResultMaster.success(voucherUserInfo);
+        if(Constant.LANG_CS_CZ.equals(lang)) {
+            return ResultMaster.successCZ(voucherUserInfo);
+        }else {
+            return ResultMaster.success(voucherUserInfo);
+        }
     }
 
-    public ResultInfo validate(String mac, HttpSession session){
+    public ResultInfo validate(String mac, HttpSession session, String lang){
         VoucherUserInfo voucherUserInfo1 = voucherUserDao.selectOneByMac(mac);
         if(voucherUserInfo1 == null){
             throw new XException(EnumResult.ERROR_DEVICE_NO_REGISTER);

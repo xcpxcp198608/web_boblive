@@ -26,8 +26,9 @@ public class Authorization {
      */
     @RequestMapping(value = "/active", method = RequestMethod.POST)
     public @ResponseBody
-    ResultInfo active(@RequestParam String key, @RequestParam String mac){
-        return authorizationService.active(key, mac);
+    ResultInfo active(@RequestParam String key, @RequestParam String mac,
+                      @RequestParam(required = false, defaultValue = "en_US") String lang){
+        return authorizationService.active(key, mac, lang);
     }
 
     /**
@@ -37,8 +38,10 @@ public class Authorization {
      * @return
      */
     @RequestMapping(value = "/validate", method = RequestMethod.POST)
-    public @ResponseBody ResultInfo validate(HttpServletRequest request, @RequestParam String key, @RequestParam String mac){
-        return authorizationService.validate(request, key, mac);
+    public @ResponseBody ResultInfo validate(HttpServletRequest request, @RequestParam String key,
+                                             @RequestParam String mac,
+                                             @RequestParam(required = false, defaultValue = "en_US") String lang){
+        return authorizationService.validate(request, key, mac, lang);
     }
 
 }

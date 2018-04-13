@@ -26,8 +26,9 @@ public class User {
      * @return                  {@link ResultInfo}
      */
     @PostMapping(value = "/activate")
-    public ResultInfo activate(VoucherUserInfo voucherUserInfo){
-        return voucherUserService.activate(voucherUserInfo);
+    public ResultInfo activate(VoucherUserInfo voucherUserInfo,
+                               @RequestParam(required = false, defaultValue = "en_US") String lang){
+        return voucherUserService.activate(voucherUserInfo, lang);
     }
 
     /**
@@ -37,8 +38,8 @@ public class User {
      * @return
      */
     @GetMapping(value = "/validate/{mac}")
-    public ResultInfo validate(@PathVariable String mac, HttpSession session){
-        return voucherUserService.validate(mac, session);
+    public ResultInfo validate(@PathVariable String mac, HttpSession session, @RequestParam(required = false, defaultValue = "en_US") String lang){
+        return voucherUserService.validate(mac, session, lang);
     }
 
 }

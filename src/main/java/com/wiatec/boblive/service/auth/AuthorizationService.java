@@ -1,9 +1,7 @@
 package com.wiatec.boblive.service.auth;
 
-import com.wiatec.boblive.common.result.EnumResult;
-import com.wiatec.boblive.common.result.ResultInfo;
-import com.wiatec.boblive.common.result.ResultMaster;
-import com.wiatec.boblive.common.result.XException;
+import com.wiatec.boblive.Constant;
+import com.wiatec.boblive.common.result.*;
 import com.wiatec.boblive.common.utils.TokenUtil;
 import com.wiatec.boblive.listener.SessionListener;
 import com.wiatec.boblive.orm.dao.auth.AuthorizationDao;
@@ -71,7 +69,7 @@ public class AuthorizationService {
      * @return
      */
     @Transactional
-    public ResultInfo<AuthorizationInfo> active(String key, String mac){
+    public ResultInfo<AuthorizationInfo> active(String key, String mac, String lang){
         AuthorizationInfo authorizationInfo = new AuthorizationInfo();
         authorizationInfo.setKey(key);
         authorizationInfo.setMac(mac);
@@ -84,17 +82,29 @@ public class AuthorizationService {
             return ResultMaster.success(authorizationInfo);
         }
         if(authorizationDao.countKey(authorizationInfo) != 1){
-            throw new XException(EnumResult.ERROR_KEY_INCORRECT);
+            if(Constant.LANG_CS_CZ.equals(lang)) {
+                throw new XException(EnumResultCZ.ERROR_KEY_INCORRECT);
+            }else{
+                throw new XException(EnumResult.ERROR_KEY_INCORRECT);
+            }
         }
         if(authorizationDao.selectActiveByKey(authorizationInfo) == 1){
             if(authorizationDao.countOne(authorizationInfo) == 1){
                 authorizationInfo = authorizationDao.selectOneByKey(authorizationInfo);
                 if(!authorizationInfo.isEffective()){
-                    throw new XException(EnumResult.ERROR_KEY_DEACTIVATE);
+                    if(Constant.LANG_CS_CZ.equals(lang)) {
+                        throw new XException(EnumResultCZ.ERROR_KEY_DEACTIVATE);
+                    }else {
+                        throw new XException(EnumResult.ERROR_KEY_DEACTIVATE);
+                    }
                 }
                 return update(false, resultInfo, authorizationInfo);
             }else {
-                throw new XException(EnumResult.ERROR_KEY_ALREADY_USE);
+                if(Constant.LANG_CS_CZ.equals(lang)) {
+                    throw new XException(EnumResultCZ.ERROR_KEY_ALREADY_USE);
+                }else {
+                    throw new XException(EnumResult.ERROR_KEY_ALREADY_USE);
+                }
             }
         }
         return update(true, resultInfo, authorizationInfo);
@@ -121,7 +131,7 @@ public class AuthorizationService {
      * @param mac wifi mac of the device
      * @return
      */
-    public ResultInfo<AuthorizationInfo> validate(HttpServletRequest request, String key, String mac){
+    public ResultInfo<AuthorizationInfo> validate(HttpServletRequest request, String key, String mac, String lang){
         AuthorizationInfo authorizationInfo = new AuthorizationInfo();
         authorizationInfo.setKey(key);
         authorizationInfo.setMac(mac);
@@ -150,7 +160,11 @@ public class AuthorizationService {
             session.setAttribute("key", key);
             return ResultMaster.success(authorizationInfo1);
         }else{
-            throw new XException(ResultMaster.error(1009, "validate failure"));
+            if(Constant.LANG_CS_CZ.equals(lang)) {
+                throw new XException(EnumResultCZ.ERROR_VALIDATE_FAILURE);
+            }else {
+                throw new XException(EnumResult.ERROR_VALIDATE_FAILURE);
+            }
         }
     }
 

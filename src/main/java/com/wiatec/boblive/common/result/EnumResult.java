@@ -1,6 +1,10 @@
 package com.wiatec.boblive.common.result;
 
-public enum  EnumResult {
+/**
+ * @author patrick
+ */
+
+public enum EnumResult {
 
     SUCCESS(200, "Successfully"),
     ERROR_UNAUTH(401, "Unauthorized"),
@@ -31,6 +35,7 @@ public enum  EnumResult {
 
     ERROR_CREATE_FAILURE(6021, "create16 failure"),
     ERROR_UPDATE_FAILURE(6022, "update failure"),
+    ERROR_VALIDATE_FAILURE(6023, "validate failure"),
 
     ;
 

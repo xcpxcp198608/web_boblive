@@ -36,4 +36,16 @@
         <property name="resolveLazily" value="true"/>
     </bean>
 
+
+    <!--<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">-->
+        <!--<property name="basename" value="classpath: language*"/>-->
+        <!--<property name="useCodeAsDefaultMessage" value="true"/>-->
+    <!--</bean>-->
+
+    <!--<mvc:interceptors>-->
+        <!--<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">-->
+            <!--<property name="paramName" value="lang"/>-->
+        <!--</bean>-->
+    <!--</mvc:interceptors>-->
+
 </beans>
