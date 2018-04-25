@@ -45,7 +45,13 @@
         </where>
     </select>
 
-    <select id="selectBasic" resultMap="channelInfo">
+    <select id="selectVoucherChannel" resultType="com.wiatec.boblive.orm.pojo.ChannelInfo">
+        <include refid="select"/>
+        WHERE country in ('BASIC', 'PREMIUM') ORDER BY czSequence
+    </select>
+
+
+    <select id="selectBasic" resultMap="channelInfo" >
         <include refid="select"/>
         WHERE visible = 1 ORDER BY name
     </select>

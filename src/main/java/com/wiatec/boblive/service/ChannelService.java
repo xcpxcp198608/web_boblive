@@ -24,10 +24,14 @@ public class ChannelService extends BaseService<ChannelInfo>{
 
     public ResultInfo selectByCountry(String language, String country, String token){
         List<ChannelInfo> channelInfoList;
-        Map<String, String> map = new HashMap<>();
-        map.put("country", country);
-        map.put("language", language);
-        channelInfoList = channelDao.selectByCountry(map);
+        if("VOUCHER".equals(country)){
+            channelInfoList = channelDao.selectVoucherChannel();
+        }else {
+            Map<String, String> map = new HashMap<>(2);
+            map.put("country", country);
+            map.put("language", language);
+            channelInfoList = channelDao.selectByCountry(map);
+        }
         for(ChannelInfo channelInfo : channelInfoList){
             channelInfo.setUrl(AESUtil.encrypt(channelInfo.getUrl(), AESUtil.KEY));
         }

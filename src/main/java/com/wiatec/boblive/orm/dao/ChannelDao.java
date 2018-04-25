@@ -8,10 +8,12 @@ import java.util.Map;
 
 /**
  * data operation interface of channel table
+ * @author patrick
  */
 @Repository
 public interface ChannelDao {
 
     List<ChannelInfo> selectByCountry(Map<String, String> map);
+    List<ChannelInfo> selectVoucherChannel();
     List<ChannelInfo> selectBasic();
 }

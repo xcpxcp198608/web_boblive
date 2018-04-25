@@ -59,7 +59,7 @@
     <bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybatis-configuration.xml"/>
-        <property name="mapperLocations" value="classpath*:com/wiatec/boblive/orm/mapper/*.xml"/>
+        <property name="mapperLocations" value="classpath*:mapper/*.xml"/>
         <property name="typeAliasesPackage" value="com.wiatec.boblive.orm.pojo;
                                                    com.wiatec.boblive.orm.pojo.auth;
                                                    com.wiatec.boblive.orm.pojo.voucher"/>
